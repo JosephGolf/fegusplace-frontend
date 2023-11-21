@@ -87,7 +87,7 @@ export default function Register(props) {
 
       // console.log(user)
       axios
-        .post("http://localhost:8080/auth/signup", user)
+        .post("https://fegusplacebackend.onrender.com/auth/signup", user)
         .then((data) => {
           if (data.data.message) {
             handleClickAlert();

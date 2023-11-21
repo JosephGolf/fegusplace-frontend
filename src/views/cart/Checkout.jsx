@@ -115,7 +115,7 @@ const CheckoutView = (props) => {
       setOpen(true);
       if (totalPrice) {
         axios({
-          url: "http://localhost:8080/order/set-order",
+          url: "https://fegusplacebackend.onrender.com/order/set-order",
           method: "post",
           // headers:{
           //  Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODFmYTJmYTc2NDBhMjllMGM4ZmVkMSIsImlhdCI6MTYxOTM5NDg3OSwiZXhwIjoxNjE5NDE2NDc5fQ.znfafu6gcRfisVjybUnHGIoakOYK23ant5rMMlQ2CGg`
@@ -145,7 +145,7 @@ const CheckoutView = (props) => {
 
               axios({
                 method: "put",
-                url: "http://localhost:8080/user/orders",
+                url: "https://fegusplacebackend.onrender.com/user/orders",
                 data: { orders: newOrders },
                 headers: { Authorization: `Bearer ${token}` },
               })
@@ -203,7 +203,7 @@ const CheckoutView = (props) => {
     try {
       const token = localStorage.getItem("token");
       if (token) {
-        fetch("http://localhost:8080/user/get-cart", {
+        fetch("https://fegusplacebackend.onrender.com/user/get-cart", {
           headers: { Authorization: `Bearer ${token}` },
         })
           .then((data) =>
@@ -264,7 +264,7 @@ const CheckoutView = (props) => {
         ],
       };
       axios({
-        url: "http://localhost:8080/payment/paypal-payment",
+        url: "https://fegusplacebackend.onrender.com/payment/paypal-payment",
         method: "POST",
         headers: {
           Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODFmYTJmYTc2NDBhMjllMGM4ZmVkMSIsImlhdCI6MTYxOTM5NDg3OSwiZXhwIjoxNjE5NDE2NDc5fQ.znfafu6gcRfisVjybUnHGIoakOYK23ant5rMMlQ2CGg`,

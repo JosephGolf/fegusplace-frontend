@@ -19,7 +19,7 @@ const OrdersView = (props) => {
     const token = localStorage.getItem("token");
 
     if (token) {
-      fetch("http://localhost:8080/user/is-login", {
+      fetch("https://fegusplacebackend.onrender.com/user/is-login", {
         method: "post",
         headers: { Authorization: `Bearer ${token}` },
       })

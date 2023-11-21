@@ -117,7 +117,7 @@ const componentClicked=()=>{
 }
 const responseFacebook=(res)=>{
 console.log(res)
-axios.post("http://localhost:8080/auth/login",{
+axios.post("https://fegusplacebackend.onrender.com/auth/login",{
  
      password: res.id,
      email:res.email
@@ -137,7 +137,7 @@ window.location.replace('/')
 },1500)
 
 } else {
-  axios.post("http://localhost:8080/auth/signup",{
+  axios.post("https://fegusplacebackend.onrender.com/auth/signup",{
         name:res.name,
        password: res.id,
        email:res.email

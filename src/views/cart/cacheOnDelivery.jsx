@@ -39,7 +39,7 @@ const CacheOnDelivery = (props) => {
     };
 
     axios({
-      url: "http://localhost:8080/order/set-order",
+      url: "https://fegusplacebackend.onrender.com/order/set-order",
       method: "post",
 
       data: {
@@ -61,7 +61,7 @@ const CacheOnDelivery = (props) => {
 
         axios({
           method: "put",
-          url: "http://localhost:8080/user/orders",
+          url: "https://fegusplacebackend.onrender.com/user/orders",
           data: { orders: newOrders },
           headers: { Authorization: `Bearer ${token}` },
         })

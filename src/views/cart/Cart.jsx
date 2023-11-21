@@ -144,7 +144,7 @@ if(props.userLogin){
 if(token){
   axios({
     method: "put",
-    url: "http://localhost:8080/user/cart",
+    url: "https://fegusplacebackend.onrender.com/user/cart",
     data: {cart:cart},
     headers: { Authorization: `Bearer ${token}`}
   }).then(data=>{
