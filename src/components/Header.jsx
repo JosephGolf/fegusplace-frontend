@@ -34,7 +34,7 @@ const Header = (props) => {
         <img
           src={fegusplacecoverimage}
           // style={{ width: "225vh", height:"20vh", margin: "auto" }}
-          style={{ maxWidth: '100%', maxHeight: '3in', width: 'auto', height: 'auto' }}
+          style={{ maxWidth: '120%', maxHeight: '2in', width: 'auto', height: 'auto' }}
         />
       </div>
 
