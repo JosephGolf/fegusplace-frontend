@@ -29,7 +29,7 @@ const Header = (props) => {
     <React.Fragment>
       <div
         className="reg"
-        style={{ width: "100%", background: "#feb800", textAlign: "center" }}
+        style={{ width: "100%", background: "#232323", textAlign: "center" }}
       >
         <img
           src={fegusplacecoverimage}
