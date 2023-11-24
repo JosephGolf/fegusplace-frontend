@@ -266,7 +266,7 @@ class HomeViewClass extends Component {
             <div className="markup -pvs">
               <img src="https://res.cloudinary.com/ddsfhaly2/image/upload/v1700857063/Green_and_White_Conceptual_New_Season_Billboard_miwpcn.png"
                    alt="Place Your Ad"
-                   style={{ maxWidth: '80%', maxHeight: '3in', width: 'auto', height: 'auto' }}/>
+                   style={{ maxWidth: '100%', maxHeight: '3in', width: '100%', height: 'auto' }}/>
             </div>
           </div>
         </section>
