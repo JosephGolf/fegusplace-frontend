@@ -23,9 +23,9 @@ class NotFoundView extends Component {
               </div>
             </div>
           </div>
-            <div className="col-md-6">
-              <img src="https://www.jumia.com.eg/assets_he/images/people.ec5b815c.svg" alt="jumia"/>
-            </div>
+            {/*<div className="col-md-6">*/}
+            {/*  <img src="https://www.jumia.com.eg/assets_he/images/people.ec5b815c.svg" alt="jumia"/>*/}
+            {/*</div>*/}
         </div>
         
       </div>
