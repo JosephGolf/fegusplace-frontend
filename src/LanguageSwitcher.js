@@ -18,7 +18,6 @@ function LanguageSwitcher() {
       >
         <option selected disabled> - {t("lang")} - </option>
         <option value="en">English</option>
-        <option value="ar">عربي</option>
       </select>
     </div>
   );
