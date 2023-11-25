@@ -141,6 +141,7 @@ class HomeViewClass extends Component {
         </div>
       </div>
     ));
+    console.log(this.state.sliders);
     function setProductCat(catNAme) {
       console.log("catName", catNAme);
       return catNAme;
