@@ -8,7 +8,7 @@ const Item = ({ item, index }) => (
                 src={item.img}
                 className="img-fluid"
                 alt={item.title}
-                style={{ display: "block", margin: "auto", width: "100%" }}
+                style={{ display: "block", margin: "auto", width: "100%", height: "100%" }}
             />
             {(item.title || item.description) && (
                 <div className="carousel-caption d-none d-md-block" style={{ top: '38%' }}>
@@ -19,7 +19,6 @@ const Item = ({ item, index }) => (
         </Link>
     </div>
 );
-
 
 const Indicator = ({ id, index }) => (
     <li
