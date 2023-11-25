@@ -1,8 +1,13 @@
 
 /* Override boostrap btn */
-.btn-warning{
+.btn{
   background-color: deeppink;
     border-color: deeppink;
+}
+
+.btn-warning{
+  background-color: deeppink;
+  border-color: deeppink;
 }
 
 body{
