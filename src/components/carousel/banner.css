@@ -1,0 +1,14 @@
+/* banner.css */
+@media (min-width: 769px) {
+    .carousel-item img {
+        width: 70%;
+        height: auto;
+    }
+}
+
+@media (min-width: 1201px) {
+    .carousel-item img {
+        width: 50%;
+        height: auto;
+    }
+}

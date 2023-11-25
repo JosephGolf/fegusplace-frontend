@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './banner.css';
 
 const Item = ({ item, index }) => (
     <div className={`carousel-item ${index === 0 ? "active" : ""}`}>
@@ -34,14 +35,13 @@ const Banner = (props) => {
             id={props.id}
             className={`carousel slide ${props.className}`}
             data-ride="carousel"
-            style={{ minHeight: 100 }}
         >
             <ol className="carousel-indicators">
                 {props.data.map((item, index) => (
                     <Indicator id={props.id} index={index} key={index} />
                 ))}
             </ol>
-            <div className="carousel-inner" style={{ maxHeight: '350px' }}>
+            <div className="carousel-inner">
                 {props.data.map((item, index) => (
                     <Item item={item} index={index} key={index} />
                 ))}
