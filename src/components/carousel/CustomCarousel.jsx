@@ -1,7 +1,7 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
 
-const CustomCarousel = ({ data }) => {
+const CustomCarousel = ({ data,imageWidth, imageHeight }) => {
     return (
         <Carousel>
             {data.map((item, index) => (
