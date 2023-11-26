@@ -10,6 +10,7 @@ const CustomCarousel = ({ data }) => {
                         className="d-block w-100"
                         src={item.img}
                         alt={item.title}
+                        style={{ width: imageWidth, height: imageHeight, objectFit: 'cover' }}
                     />
                     <Carousel.Caption>
                         {item.title && <h3>{item.title}</h3>}
