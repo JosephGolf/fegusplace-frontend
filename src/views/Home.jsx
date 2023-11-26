@@ -19,6 +19,7 @@ const Carousel = lazy(() => import("../components/carousel/Carousel"));
 const CardIcon = lazy(() => import("../components/card/CardIcon"));
 const CardLogin = lazy(() => import("../components/card/CardLogin"));
 const CardImage = lazy(() => import("../components/card/CardImage"));
+const CustomCarousel = lazy(() => import("../components/carousel/CustomCarousel"));
 const CardDealsOfTheDay = lazy(() =>
   import("../components/card/CardDealsOfTheDay")
 );
@@ -153,12 +154,13 @@ class HomeViewClass extends Component {
               <TopMenu data={this.state.cats} />
             </div>
             <div className="col-md-8">
-              <Banner
+              <CustomCarousel data={this.state.sliders} />
+              {/*<Banner
                 className="mb-3"
                 id="carouselHomeBanner"
                 data={this.state.sliders}
                 onClick={(e) => setProductCat(e.target)}
-              />
+              />*/}
               {/*<Banner
                   className="mb-3"
                   id="carouselHomeBanner"
