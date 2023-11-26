@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Item = ({ item, index }) => (
-    <div className={`carousel-item ${index === 0 ? "active" : ""}`}>
+
+const Item = ({ item }) => (
+    <div className="carousel-item">
         <Link to={item.to}>
             <img
                 src={item.img}
@@ -19,6 +20,7 @@ const Item = ({ item, index }) => (
         </Link>
     </div>
 );
+
 
 
 const Indicator = ({ id, index }) => (
