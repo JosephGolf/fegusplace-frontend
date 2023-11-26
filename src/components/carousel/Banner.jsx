@@ -20,6 +20,21 @@ import { Link } from "react-router-dom";
     </div>
 );*/
 
+
+/*[
+    {
+        "to": "https://res.cloudinary.com/ddsfhaly2/image/upload/v1700849361/396957013_122112343754086114_2359268281152355785_n_egogg1.jpg",
+        "img": "https://res.cloudinary.com/ddsfhaly2/image/upload/v1700849361/396957013_122112343754086114_2359268281152355785_n_egogg1.jpg",
+        "title": "",
+        "description": ""
+    },
+    {
+        "to": "https://res.cloudinary.com/ddsfhaly2/image/upload/v1700849362/400769465_122117678702086114_8089522617952663381_n_fw6ct8.jpg",
+        "img": "https://res.cloudinary.com/ddsfhaly2/image/upload/v1700849362/400769465_122117678702086114_8089522617952663381_n_fw6ct8.jpg",
+        "title": "",
+        "description": ""
+    }
+]*/
 const Item = ({ item, index }) => (
     <div className={`carousel-item ${index === 0 ? "active" : ""}`}>
         <Link to={item.to}>

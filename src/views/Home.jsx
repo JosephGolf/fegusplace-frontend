@@ -156,12 +156,32 @@ class HomeViewClass extends Component {
               <TopMenu data={this.state.cats} />
             </div>
             <div className="col-md-8">
-              <Banner
+              {/*<Banner
                 className="mb-3"
                 id="carouselHomeBanner"
                 data={this.state.sliders}
                 onClick={(e) => setProductCat(e.target)}
+              />*/}
+              <Banner
+                  className="mb-3"
+                  id="carouselHomeBanner"
+                  data={[
+                    {
+                      "to": "https://res.cloudinary.com/ddsfhaly2/image/upload/v1700849361/396957013_122112343754086114_2359268281152355785_n_egogg1.jpg",
+                      "img": "https://res.cloudinary.com/ddsfhaly2/image/upload/v1700849361/396957013_122112343754086114_2359268281152355785_n_egogg1.jpg",
+                      "title": "",
+                      "description": ""
+                    },
+                    {
+                      "to": "https://res.cloudinary.com/ddsfhaly2/image/upload/v1700849362/400769465_122117678702086114_8089522617952663381_n_fw6ct8.jpg",
+                      "img": "https://res.cloudinary.com/ddsfhaly2/image/upload/v1700849362/400769465_122117678702086114_8089522617952663381_n_fw6ct8.jpg",
+                      "title": "",
+                      "description": ""
+                    }
+                  ]}
+                  onClick={(e) => setProductCat(e.target)}
               />
+
             </div>
           </div>
         </div>
