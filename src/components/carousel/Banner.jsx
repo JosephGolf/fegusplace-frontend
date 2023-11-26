@@ -31,12 +31,26 @@ const Indicator = ({ id, index }) => (
 );
 
 const Banner = (props) => {
+    const carousel = React.useRef();
+
+    const handleNextClick = () => {
+        carousel.current.next();
+    };
+
+    const handlePrevClick = () => {
+        carousel.current.prev();
+    };
+
+    React.useEffect(() => {
+        $(carousel.current).carousel({
+            interval: 2000,
+            pause: "hover",
+            wrap: true,
+        });
+    }, []);
+
     return (
-        <div
-            id={props.id}
-            className={`carousel slide ${props.className}`}
-            data-ride="carousel"
-        >
+        <div id={props.id} className={`carousel slide ${props.className}`}>
             <ol className="carousel-indicators">
                 {props.data.map((item, index) => (
                     <Indicator id={props.id} index={index} key={index} />
@@ -50,6 +64,7 @@ const Banner = (props) => {
             <a
                 className="carousel-control-prev"
                 href={`#${props.id}`}
+                onClick={handlePrevClick}
                 role="button"
                 data-slide="prev"
             >
@@ -59,6 +74,7 @@ const Banner = (props) => {
             <a
                 className="carousel-control-next"
                 href={`#${props.id}`}
+                onClick={handleNextClick}
                 role="button"
                 data-slide="next"
             >
