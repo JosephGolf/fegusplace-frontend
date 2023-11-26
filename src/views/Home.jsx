@@ -157,7 +157,7 @@ class HomeViewClass extends Component {
               <CustomCarousel
                   data={this.state.sliders}
                   imageWidth="500px"
-                  imageHeight="300px"
+                  imageHeight="500px"
               />
 
 
