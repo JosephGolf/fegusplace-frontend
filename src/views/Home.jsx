@@ -1,6 +1,4 @@
 import React, { lazy, Component } from "react";
-import { Link } from "react-router-dom";
-// import { link45, file, check2all } from "../npm/icon";
 import { useTranslation } from "react-i18next";
 import { data } from "../data";
 import Slider from "./product/slider";
@@ -142,7 +140,6 @@ class HomeViewClass extends Component {
       </div>
     ));
     console.log(this.state.sliders);
-    debugger;
     function setProductCat(catNAme) {
       console.log("catName", catNAme);
       return catNAme;
