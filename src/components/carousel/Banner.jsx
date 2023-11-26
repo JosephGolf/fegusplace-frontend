@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
-const Item = ({ item }) => (
-    <div className="carousel-item">
+const Item = ({ item, index }) => (
+    <div className={`carousel-item ${index === 0 ? "active" : ""}`}>
         <Link to={item.to}>
             <img
                 src={item.img}
@@ -21,8 +20,6 @@ const Item = ({ item }) => (
     </div>
 );
 
-
-
 const Indicator = ({ id, index }) => (
     <li
         data-target={`#${id}`}
@@ -32,7 +29,6 @@ const Indicator = ({ id, index }) => (
 );
 
 const Banner = (props) => {
-    console.log("Data received:", props.data);
     return (
         <div
             id={props.id}
