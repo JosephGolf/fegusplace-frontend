@@ -30,6 +30,7 @@ const Indicator = ({ id, index }) => (
 );
 
 const Banner = (props) => {
+    console.log("Data received:", props.data);
     return (
         <div
             id={props.id}
