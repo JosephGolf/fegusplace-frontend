@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Item = ({ item, index }) => (
+/*const Item = ({ item, index }) => (
     <div className={`carousel-item ${index === 0 ? "active" : ""}`}>
         <Link to={item.to}>
             <img
@@ -18,7 +18,27 @@ const Item = ({ item, index }) => (
             )}
         </Link>
     </div>
+);*/
+
+const Item = ({ item, index }) => (
+    <div className={`carousel-item ${index === 0 ? "active" : ""}`}>
+        <Link to={item.to}>
+            <img
+                src={item.img}
+                className="img-fluid"
+                alt={item.title}
+                style={{ display: "block", margin: "auto", width: "300px", height: "200px" }}
+            />
+            {(item.title || item.description) && (
+                <div className="carousel-caption d-none d-md-block" style={{ top: '38%' }}>
+                    {item.title && <h5>{item.title}</h5>}
+                    {item.description && <p>{item.description}</p>}
+                </div>
+            )}
+        </Link>
+    </div>
 );
+
 
 
 
