@@ -8,12 +8,10 @@ const Item = ({ item, index }) => (
                 src={item.img}
                 className="img-fluid"
                 alt={item.title}
+                style={{ display: "block", margin: "auto", width: "100%" }}
             />
             {(item.title || item.description) && (
-                <div
-                    className="carousel-caption d-none d-md-block"
-                    style={{ top: "38%" }}
-                >
+                <div className="carousel-caption d-none d-md-block" style={{ top: '38%' }}>
                     {item.title && <h5>{item.title}</h5>}
                     {item.description && <p>{item.description}</p>}
                 </div>
@@ -21,6 +19,7 @@ const Item = ({ item, index }) => (
         </Link>
     </div>
 );
+
 
 const Indicator = ({ id, index }) => (
     <li
@@ -31,32 +30,19 @@ const Indicator = ({ id, index }) => (
 );
 
 const Banner = (props) => {
-    const carousel = React.useRef();
-
-    const handleNextClick = () => {
-        carousel.current.next();
-    };
-
-    const handlePrevClick = () => {
-        carousel.current.prev();
-    };
-
-    React.useEffect(() => {
-        $(carousel.current).carousel({
-            interval: 2000,
-            pause: "hover",
-            wrap: true,
-        });
-    }, []);
-
     return (
-        <div id={props.id} className={`carousel slide ${props.className}`}>
+        <div
+            id={props.id}
+            className={`carousel slide ${props.className}`}
+            data-ride="carousel"
+            style={{ minHeight: 100 }}
+        >
             <ol className="carousel-indicators">
                 {props.data.map((item, index) => (
                     <Indicator id={props.id} index={index} key={index} />
                 ))}
             </ol>
-            <div className="carousel-inner">
+            <div className="carousel-inner" style={{ maxHeight: '350px' }}>
                 {props.data.map((item, index) => (
                     <Item item={item} index={index} key={index} />
                 ))}
@@ -64,7 +50,6 @@ const Banner = (props) => {
             <a
                 className="carousel-control-prev"
                 href={`#${props.id}`}
-                onClick={handlePrevClick}
                 role="button"
                 data-slide="prev"
             >
@@ -74,7 +59,6 @@ const Banner = (props) => {
             <a
                 className="carousel-control-next"
                 href={`#${props.id}`}
-                onClick={handleNextClick}
                 role="button"
                 data-slide="next"
             >
