@@ -27,7 +27,7 @@ const Item = ({ item, index }) => (
                 src={item.img}
                 className="img-fluid"
                 alt={item.title}
-                style={{ display: "block", margin: "auto", width: "300px", height: "200px" }}
+                style={{ display: "block", margin: "auto", width: "1000px", height: "350px" }}
             />
             {(item.title || item.description) && (
                 <div className="carousel-caption d-none d-md-block" style={{ top: '38%' }}>
