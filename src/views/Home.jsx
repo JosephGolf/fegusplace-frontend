@@ -153,13 +153,13 @@ class HomeViewClass extends Component {
               <TopMenu data={this.state.cats} />
             </div>
             <div className="col-md-8">
-              {/*<Banner
+              <Banner
                 className="mb-3"
                 id="carouselHomeBanner"
                 data={this.state.sliders}
                 onClick={(e) => setProductCat(e.target)}
-              />*/}
-              <Banner
+              />
+              {/*<Banner
                   className="mb-3"
                   id="carouselHomeBanner"
                   data={[
@@ -177,7 +177,7 @@ class HomeViewClass extends Component {
                     }
                   ]}
                   onClick={(e) => setProductCat(e.target)}
-              />
+              />*/}
 
             </div>
           </div>
