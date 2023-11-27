@@ -63,21 +63,19 @@ const Header = (props) => {
                     aria-label="Profile"
                 >
                   <i className="fa fa-user mr-1"></i>
-                  {props.user.name ? props.user.name :`${t("login")}`}
-
-                  {/* {props.userLogin&&props.userLogin } */}
+                  {props.user.name ? props.user.name : `${t("login")}`}
                   <i className="fa fa-arrow-down ml-1"></i>
                 </button>
                 <ul className="dropdown-menu">
                   <li
-                      style={{ display: "none" }}
+                      style={{ display: props.user.name ? "block" : "none" }}
                       className={props.user.name ? "d-block" : ""}
                   >
                     <Link className="dropdown-item" to="/account/orders">
                       <IconPersonBadgeFill /> My Profile
                     </Link>
                   </li>
-                  <div className={props.user.name ? "d-none" : ""}>
+                  <div style={{ display: props.user.name ? "none" : "block" }}>
                     <li>
                       <Link className="dropdown-item" to="/account/login">
                         {t("login")} <i className="fa fa-sign-in-alt" />
@@ -89,10 +87,10 @@ const Header = (props) => {
                       </Link>
                     </li>
                   </div>
-                  <li className={props.user.name ? "" : "d-none"}>
+                  <li style={{ display: props.user.name ? "block" : "none" }}>
                     <hr className="dropdown-divider" />
                   </li>
-                  <li className={props.user.name ? "" : "d-none"}>
+                  <li style={{ display: props.user.name ? "block" : "none" }}>
                     <Link to="/" className="dropdown-item" onClick={logOut}>
                       <IconDoorClosedFill className="text-danger" /> Logout
                     </Link>
@@ -113,6 +111,7 @@ const Header = (props) => {
                 </Link>
               </div>
             </div>
+
           </div>
         </div>
       </header>
