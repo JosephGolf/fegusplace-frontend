@@ -61,6 +61,7 @@ const Header = (props) => {
                   data-toggle="dropdown"
                   aria-expanded="false"
                   aria-label="Profile"
+                  onClick={(e) => console.log("Clicked btn!")}
                 >
                   <i className="fa fa-user mr-1"></i>
                   {props.user.name ? props.user.name :`${t("login")}`}
