@@ -79,7 +79,7 @@ const Header = (props) => {
                   </li>
                   <div className={props.user.name ? "d-none" : ""}>
                     <li>
-                      <Link className="dropdown-item" to="/account/login">
+                      <Link className="dropdown-item" to="/account/login" onClick={(e) => console.log("Clicked!")}>
                         {t("login")} <i className="fa fa-sign-in-alt" />
                       </Link>
                     </li>
