@@ -55,7 +55,7 @@ const Header = (props) => {
             </div>
             <div className="col-md-5">
               <div className="btn-group">
-                <button
+                {/*<button
                   type="button"
                   className="btn btn-secondary border mr-3 dropdown-toggle1"
                   data-toggle="dropdown"
@@ -66,9 +66,21 @@ const Header = (props) => {
                   <i className="fa fa-user mr-1"></i>
                   {props.user.name ? props.user.name :`${t("login")}`}
 
-                  {/* {props.userLogin&&props.userLogin } */}
+                   {props.userLogin&&props.userLogin }
+                  <i className="fa fa-arrow-down ml-1"></i>
+                </button>*/}
+
+                <button
+                    type="button"
+                    className="btn btn-secondary border mr-3 dropdown-toggle1"
+                    aria-label="Profile"
+                    onClick={(e) => console.log("Clicked btn!")}
+                >
+                  <i className="fa fa-user mr-1"></i>
+                  {props.user.name ? props.user.name : `${t("login")}`}
                   <i className="fa fa-arrow-down ml-1"></i>
                 </button>
+
                 <ul className="dropdown-menu">
                   <li
                     style={{ display: "none" }}
