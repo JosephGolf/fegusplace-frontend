@@ -243,11 +243,11 @@ class HomeViewClass extends Component {
                 <Slider data={this.state.suerpMarkets} />
               </div>
             </div>
-            <div className="col-md-2">
-              <img src="https://res.cloudinary.com/ddsfhaly2/image/upload/v1700857063/Green_and_White_Conceptual_New_Season_Billboard_miwpcn.png"
-                   alt="Place Your Ad"
-                   style={{ maxWidth: '100%', maxHeight: '3in', width: '100%', height: 'auto' }}/>
-            </div>
+          </div>
+          <div className="col-md-2">
+            <img src="https://res.cloudinary.com/ddsfhaly2/image/upload/v1700857063/Green_and_White_Conceptual_New_Season_Billboard_miwpcn.png"
+                 alt="Place Your Ad"
+                 style={{ maxWidth: '100%', maxHeight: '3in', width: '100%', height: 'auto' }}/>
           </div>
         </div>
 
