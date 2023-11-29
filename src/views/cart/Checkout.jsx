@@ -575,14 +575,14 @@ const CheckoutView = (props) => {
                           <small className="text-muted"></small>
                         </div>
                         <span className="text-muted">
-                          EGP {item.price - (item.price * item.discount) / 100}
+                          N {item.price - (item.price * item.discount) / 100}
                         </span>
                       </li>
                     );
                   })}
 
                 <li className="list-group-item d-flex justify-content-between">
-                  <span>{t("total")} (EGP)</span>
+                  <span>{t("total")} (N)</span>
                   <strong>
                     {userCart &&
                       userCart.reduce((sum, next) => {

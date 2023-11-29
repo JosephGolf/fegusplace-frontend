@@ -126,7 +126,7 @@ const CacheOnDelivery = (props) => {
                   <span className="-fwm color-default">Monday 3 May</span> and
                   <span className="-fwm color-default">Tuesday 4 May</span>. for
                   <b className="color-primary">
-                    <span data-currency-iso="EGP">EGP</span>
+                    <span data-currency-iso="N">N</span>
                     <span dir="ltr" data-price="25.65">
                       26
                     </span>
@@ -137,13 +137,13 @@ const CacheOnDelivery = (props) => {
                     <i className="osh-font-info"></i>
                     <p style={{ color: "black", fontWeight: "bold" }}>
                       * Living in Cairo or Giza,
-                      <a style={{ color: "orange" }}>JUMIA PRIMO </a> Members
+                      <a style={{ color: "orange" }}>FEGUSPLACE PROMO </a> Members
                       enjoy free delivery on all local orders and Jumia Food.
                       <br />
                       <br />
                       OR enjoy <a style={{ color: "orange" }}>FREE SHIPPING </a>
                       using your <a style={{ color: "orange" }}>Credit Card </a>{" "}
-                      for orders starting 300 EGP or above, discount will be
+                      for orders starting 300 N or above, discount will be
                       applied at checkout.
                       <br />
                       <br />
@@ -185,7 +185,7 @@ const CacheOnDelivery = (props) => {
               <div className="ft-subtotal color-default -pbm price_row ">
                 <span className="price_col-desc">Subtotal</span>
                 <span className="price_col-value">
-                  <span data-currency-iso="EGP">EGP</span>
+                  <span data-currency-iso="N">N</span>
                   <span dir="ltr" data-price="159">
                     159
                   </span>{" "}
@@ -197,7 +197,7 @@ const CacheOnDelivery = (props) => {
               <div className="applied-shipping ft-shipping-amount color-default -pbm price_row ">
                 <span className="price_col-desc">Shipping amount</span>
                 <span className="price_col-value -b">
-                  <span data-currency-iso="EGP">EGP</span>
+                  <span data-currency-iso="N">N</span>
                   <span dir="ltr" data-price="25.65">
                     26
                   </span>{" "}
@@ -218,7 +218,7 @@ const CacheOnDelivery = (props) => {
               onClick={paymentWithCache}
               type="submit"
               style={{
-                backgroundColor: "#f68b1e",
+                backgroundColor: "#E012F7",
                 color: "#ffff",
                 fontWeight: "bold",
                 width: "300px",
