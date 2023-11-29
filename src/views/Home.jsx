@@ -24,7 +24,6 @@ const CardImage = lazy(() => import("../components/card/CardImage"));
 const CardDealsOfTheDay = lazy(() =>
   import("../components/card/CardDealsOfTheDay")
 );
-
 class HomeViewClass extends Component {
   components = {
     IconLaptop: IconLaptop,
