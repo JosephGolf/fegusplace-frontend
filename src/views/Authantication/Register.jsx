@@ -136,7 +136,7 @@ export default function Register(props) {
           <Col md={8} className="mt-5 ">
             <Row>
               <Col>
-                <h4 style={{ color: "#f68b1e" }}>Create Account</h4>
+                <h4 style={{ color: "#E012F7" }}>Create Account</h4>
               </Col>
             </Row>
 
@@ -230,11 +230,11 @@ export default function Register(props) {
               <Row className="mt-5">
                 <Col>
                   <FormControlLabel
-                    control={<Checkbox style={{ color: "#f68b1e" }} />}
+                    control={<Checkbox style={{ color: "#E012F7" }} />}
                     label={
                       <div>
                         accept the{" "}
-                        <a href="" style={{ color: "#f68b1e" }}>
+                        <a href="" style={{ color: "#E012F7" }}>
                           Terms &condition
                         </a>
                       </div>
@@ -246,9 +246,9 @@ export default function Register(props) {
                 <Col>
                   <FormControlLabel
                     control={
-                      <Checkbox name="checkedB" style={{ color: "#f68b1e" }} />
+                      <Checkbox name="checkedB" style={{ color: "#E012F7" }} />
                     }
-                    label="I want to receive Jumia Newsletters with the best deals and offers"
+                    label="I want to receive Fegusplace Newsletters with the best deals and offers"
                   />
                 </Col>
               </Row>
@@ -258,7 +258,7 @@ export default function Register(props) {
                   <Button
                     type="submit"
                     style={{
-                      backgroundColor: "#f68b1e",
+                      backgroundColor: "#E012F7",
                       color: "#ffff",
                       fontWeight: "bold",
                     }}
@@ -290,7 +290,7 @@ export default function Register(props) {
             {/* Or
       <Row className='mt-3'>
           <Col>
-            <Button  style={{backgroundColor:'#f68b1e',color:'#ffff'}} disabled={!formik.isValid} variant="contained" fullWidth >
+            <Button  style={{backgroundColor:'#E012F7',color:'#ffff'}} disabled={!formik.isValid} variant="contained" fullWidth >
             Create Account
         </Button>
           </Col>
@@ -307,7 +307,7 @@ export default function Register(props) {
                 }}
               >
                 <h5>Already Have Account</h5>
-                <Link to="/account/login" style={{ color: "#f68b1e" }}>
+                <Link to="/account/login" style={{ color: "#E012F7" }}>
                   Login
                 </Link>
               </Col>
