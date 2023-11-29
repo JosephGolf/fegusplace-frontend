@@ -1,4 +1,6 @@
 import React, { lazy, Component } from "react";
+import { Link } from "react-router-dom";
+// import { link45, file, check2all } from "../npm/icon";
 import { useTranslation } from "react-i18next";
 import { data } from "../data";
 import Slider from "./product/slider";
@@ -19,7 +21,6 @@ const Carousel = lazy(() => import("../components/carousel/Carousel"));
 const CardIcon = lazy(() => import("../components/card/CardIcon"));
 const CardLogin = lazy(() => import("../components/card/CardLogin"));
 const CardImage = lazy(() => import("../components/card/CardImage"));
-const CustomCarousel = lazy(() => import("../components/carousel/CustomCarousel"));
 const CardDealsOfTheDay = lazy(() =>
   import("../components/card/CardDealsOfTheDay")
 );
@@ -140,7 +141,6 @@ class HomeViewClass extends Component {
         </div>
       </div>
     ));
-    console.log(':-datass' + this.state.suerpMarkets);
     function setProductCat(catNAme) {
       console.log("catName", catNAme);
       return catNAme;
@@ -154,13 +154,12 @@ class HomeViewClass extends Component {
               <TopMenu data={this.state.cats} />
             </div>
             <div className="col-md-8">
-              <CustomCarousel
-                  data={this.state.sliders}
-                  imageWidth="500px"
-                  imageHeight="500px"
+              <Banner
+                className="mb-3"
+                id="carouselHomeBanner"
+                data={this.state.sliders}
+                onClick={(e) => setProductCat(e.target)}
               />
-
-
             </div>
           </div>
         </div>
@@ -239,7 +238,7 @@ class HomeViewClass extends Component {
             </div>
             <div className="col-md-8">
               <div className="card p-2">
-                <div className="card-header" style={{ backgroundColor: 'pink' }}>
+                <div className="card-header" style={{ backgroundColor: 'blue' }}>
                   <h4>{this.props.trans('superMarket')}</h4>
                 </div>
                 <Slider data={this.state.suerpMarkets} />
