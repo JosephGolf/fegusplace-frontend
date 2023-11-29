@@ -237,7 +237,7 @@ class HomeViewClass extends Component {
             </div>
             <div className="col-md-8">
               <div className="card p-2">
-                <div className="card-header" style={{ backgroundColor: 'blue' }}>
+                <div className="card-header" style={{ backgroundColor: '#000080' }}>
                   <h4>{this.props.trans('superMarket')}</h4>
                 </div>
                 <Slider data={this.state.suerpMarkets} />
