@@ -239,7 +239,7 @@ class HomeViewClass extends Component {
             </div>
             <div className="col-md-8">
               <div className="card p-2">
-                <div className="card-header" style={{ backgroundColor: 'blue' }}>
+                <div className="card-header" style={{ backgroundColor: 'deepblue' }}>
                   <h4>{this.props.trans('superMarket')}</h4>
                 </div>
                 <Slider data={this.state.suerpMarkets} />
@@ -263,8 +263,8 @@ class HomeViewClass extends Component {
           </div>
         </div>*/}
         <section className="container mt-2 mb-2" style={{ fontSize: "12px" }}>
-          <div className="row">
-            <div className="col-md-2">
+          <div className="col-md-8">
+            <div className="card p-2">
           {/*<div className="card p-3">*/}
           {/*  <div className="markup -pvs">*/}
               <img src="https://res.cloudinary.com/ddsfhaly2/image/upload/v1700857063/Green_and_White_Conceptual_New_Season_Billboard_miwpcn.png"
