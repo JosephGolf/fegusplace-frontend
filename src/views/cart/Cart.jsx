@@ -383,7 +383,7 @@ const body = (
                 onClick={toCheckOut}
                   type="button"
                   style={{
-                    backgroundColor: "#f68b1e",
+                    backgroundColor: "#E012F7",
                     color: "#ffff",
                     fontWeight: "bold",
                     width:'300px'
@@ -401,7 +401,7 @@ const body = (
                   type="button"
                   style={{
                     backgroundColor: "#fff",
-                    color: "#f68b1e",
+                    color: "#E012F7",
                     fontWeight: "bold",
                     width:'300px',
                     marginLeft:'10px'

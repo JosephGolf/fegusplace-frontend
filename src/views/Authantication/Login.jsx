@@ -195,7 +195,7 @@ setFeedBackAlert("error");
         <Row>
           <Col md={6} className="pl-5">
             <Row className="d-flex justify-content-center align-items-center ">
-              <span style={{ color: "#f68b1e", fontWeight: "bolder" }}>
+              <span style={{ color: "#E012F7", fontWeight: "bolder" }}>
                 {t("login")}
               </span>
             </Row>
@@ -241,7 +241,7 @@ setFeedBackAlert("error");
                       control={
                         <Checkbox
                           name="checkedB"
-                          style={{ color: "#f68b1e" }}
+                          style={{ color: "#E012F7" }}
                         />
                       }
                       label={t("rememberMe")}
@@ -253,7 +253,7 @@ setFeedBackAlert("error");
                     <Button
                       type="submit"
                       style={{
-                        backgroundColor: "#f68b1e",
+                        backgroundColor: "#E012F7",
                         color: "#ffff",
                         fontWeight: "bold",
                         width:'100%'
@@ -327,7 +327,7 @@ setFeedBackAlert("error");
               >
                 <h4
                   style={{
-                    color: "#f68b1e",
+                    color: "#E012F7",
                     fontWeight: "bolder",
                     marginLeft: "30px",
                   }}
@@ -347,7 +347,7 @@ setFeedBackAlert("error");
                 <Link to='/account/signup'
                   type="button"
                   style={{
-                    backgroundColor: "#f68b1e",
+                    backgroundColor: "#E012F7",
                     color: "#ffff",
                     fontWeight: "bold",
                     width:'100%',
