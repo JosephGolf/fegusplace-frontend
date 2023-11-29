@@ -332,7 +332,7 @@ setFeedBackAlert("error");
                     marginLeft: "30px",
                   }}
                 >
-                 {t("createJumiaAccount")}
+                 {t("Create Fegusplace Account")}
                 </h4>
               </Col>
               <Col md={9} className="pt-2 mt-5 ">
