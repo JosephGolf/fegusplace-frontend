@@ -66,7 +66,7 @@ const resources = {
       termsAndCondtion: "Terms and Conditions",
       reportAPro: "Report a product",
       joinUs: "JOIN US ON",
-      aboutFegusplaceEgypt: "ABOUT FEGUSPLACE EGYPT",
+      aboutFegusplaceEgypt: "ABOUT FEGUSPLACE",
       howToPy: "How to pay on Fegusplace?",
       returnPolicy: "Return Policy",
       makeMoeny: "MAKE MONEY WITH FEGUSPLACE",
@@ -94,7 +94,7 @@ const resources = {
 loginCredential:"Please You need Login To Continue to checkout ",
 
 LoginToContinue:"Login To Continue",
-emptyCart:"your car it empty",
+emptyCart:"your cart is empty",
     },
   },
   ar: {
