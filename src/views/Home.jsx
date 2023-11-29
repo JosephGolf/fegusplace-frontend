@@ -160,6 +160,15 @@ class HomeViewClass extends Component {
                 onClick={(e) => setProductCat(e.target)}
               />
             </div>
+            <div className="col-md-2">
+              <div className="card p-3">
+                <div className="markup -pvs">
+                  <img src="https://res.cloudinary.com/ddsfhaly2/image/upload/v1700857063/Green_and_White_Conceptual_New_Season_Billboard_miwpcn.png"
+                       alt="Place Your Ad"
+                       style={{ maxWidth: '100%', maxHeight: '3in', width: '100%', height: 'auto' }}/>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <br />
