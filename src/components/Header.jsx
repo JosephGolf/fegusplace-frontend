@@ -44,9 +44,9 @@ const Header = (props) => {
             <div className="col-md-3 text-center">
               <Link to="/">
                 <img
-                  alt="logo"
-                  src={fegusplace}
-                  style={{ width: "100px" }}
+                    alt="logo"
+                    src={fegusplace}
+                    style={{ width: "100px" }}
                 />
               </Link>
             </div>
@@ -56,28 +56,26 @@ const Header = (props) => {
             <div className="col-md-5">
               <div className="btn-group">
                 <button
-                  type="button"
-                  className="btn btn-secondary border mr-3 dropdown-toggle1"
-                  data-toggle="dropdown"
-                  aria-expanded="false"
-                  aria-label="Profile"
+                    type="button"
+                    className="btn btn-secondary border mr-3 dropdown-toggle1"
+                    data-toggle="dropdown"
+                    aria-expanded="false"
+                    aria-label="Profile"
                 >
                   <i className="fa fa-user mr-1"></i>
-                  {props.user.name ? props.user.name :`${t("login")}`}
-
-                  {/* {props.userLogin&&props.userLogin } */}
+                  {props.user.name ? props.user.name : `${t("login")}`}
                   <i className="fa fa-arrow-down ml-1"></i>
                 </button>
                 <ul className="dropdown-menu">
                   <li
-                    style={{ display: "none" }}
-                    className={props.user.name ? "d-block" : ""}
+                      style={{ display: props.user.name ? "block" : "none" }}
+                      className={props.user.name ? "d-block" : ""}
                   >
                     <Link className="dropdown-item" to="/account/orders">
                       <IconPersonBadgeFill /> My Profile
                     </Link>
                   </li>
-                  <div className={props.user.name ? "d-none" : ""}>
+                  <div style={{ display: props.user.name ? "none" : "block" }}>
                     <li>
                       <Link className="dropdown-item" to="/account/login">
                         {t("login")} <i className="fa fa-sign-in-alt" />
@@ -85,14 +83,14 @@ const Header = (props) => {
                     </li>
                     <li>
                       <Link className="dropdown-item" to="/account/signup">
-                       {t("createAccount")} <i className="fa fa-plus" />
+                        {t("createAccount")} <i className="fa fa-plus" />
                       </Link>
                     </li>
                   </div>
-                  <li className={props.user.name ? "" : "d-none"}>
+                  <li style={{ display: props.user.name ? "block" : "none" }}>
                     <hr className="dropdown-divider" />
                   </li>
-                  <li className={props.user.name ? "" : "d-none"}>
+                  <li style={{ display: props.user.name ? "block" : "none" }}>
                     <Link to="/" className="dropdown-item" onClick={logOut}>
                       <IconDoorClosedFill className="text-danger" /> Logout
                     </Link>
@@ -105,14 +103,15 @@ const Header = (props) => {
               </div>
 
               <div className="position-relative d-inline ml-2">
-                <Link to="/cart" className="btn btn-secondary">
-                  <IconCart3 className="i-va" style={{ color: 'white' }}/>
+                <Link to="/cart" className="btn btn-warning">
+                  <IconCart3 className="i-va" />
                   <div className="position-absolute top-0 left-100 translate-middle badge bg-danger rounded-circle">
                     {props.totalItem > 0 ? props.totalItem : null}
                   </div>
                 </Link>
               </div>
             </div>
+
           </div>
         </div>
       </header>

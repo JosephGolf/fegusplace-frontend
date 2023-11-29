@@ -20,7 +20,6 @@ const Item = ({ item, index }) => (
     </div>
 );
 
-
 const Indicator = ({ id, index }) => (
     <li
         data-target={`#${id}`}
