@@ -235,18 +235,18 @@ class HomeViewClass extends Component {
 
         <div className="container-fluid mt-2">
           <div className="row">
-            <div className="col-md-2 ms-auto">
-              <img src="https://res.cloudinary.com/ddsfhaly2/image/upload/v1700857063/Green_and_White_Conceptual_New_Season_Billboard_miwpcn.png"
-                   alt="Place Your Ad"
-                   style={{ maxWidth: '100%', maxHeight: '3in', width: '100%', height: 'auto' }}/>
-            </div>
             <div className="col-md-8">
               <div className="card p-2">
-                <div className="card-header" style={{ backgroundColor: 'navy blue' }}>
+                <div className="card-header" style={{ backgroundColor: 'blue' }}>
                   <h4>{this.props.trans('superMarket')}</h4>
                 </div>
                 <Slider data={this.state.suerpMarkets} />
               </div>
+            </div>
+            <div className="col-md-2">
+              <img src="https://res.cloudinary.com/ddsfhaly2/image/upload/v1700857063/Green_and_White_Conceptual_New_Season_Billboard_miwpcn.png"
+                   alt="Place Your Ad"
+                   style={{ maxWidth: '100%', maxHeight: '3in', width: '100%', height: 'auto' }}/>
             </div>
           </div>
         </div>
