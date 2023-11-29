@@ -166,7 +166,7 @@ const body = (
     <p id="simple-modal-description">
    {t("loginCredential")}
 
-   <Link to='/account/login' style={{textDecoration:'none',color:'orangered',marginLeft:'10px'}}>{t("login")}</Link>
+   <Link to='/account/login' style={{textDecoration:'none',color:'#E012F7',marginLeft:'10px'}}>{t("login")}</Link>
     </p>
   
   </div>
