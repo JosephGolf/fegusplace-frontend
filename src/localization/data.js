@@ -23,7 +23,7 @@ const resources = {
       rememberMe:"Remember Me",
       loginWithFacebook:"login with facebook",
       registerWithFacebook:"register with facebook",
-      currency:"EGP",
+      currency:"N",
       editInfo:"Edit Information",
     ContactInfo:"Contact Info",
     checkOut:"Checkout",
