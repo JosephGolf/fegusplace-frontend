@@ -57,10 +57,10 @@ const CardProductGrid = (props) => {
         </h6>
         <div className="my-2">
           <span className="font-weight-bold h5">
-            EGP {(product.price - (product.price * product.discount) / 100).toFixed(2)}
+            N {(product.price - (product.price * product.discount) / 100).toFixed(2)}
           </span>
 
-          <del className="small text-muted ml-2">EGP{product.price}</del>
+          <del className="small text-muted ml-2">N{product.price}</del>
           
         </div>
         <div className="btn-group btn-block" role="group">
