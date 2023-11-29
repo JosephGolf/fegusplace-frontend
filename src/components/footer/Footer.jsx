@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="container">
           <div className="row py-3 mt-5">
             <div className="col-md-2 col-sm-6">
-              <img src={fegusplace} className="img-fluid"/>
+              <img src={fegusplace} className="img-fluid" style={{ width: '50px' }}/>
             </div>
             <div className="col-md-6 col-sm-6">
               <h6>
