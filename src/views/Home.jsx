@@ -257,7 +257,7 @@ class HomeViewClass extends Component {
             ))}
           </div>
         </div>*/}
-        <section className="container mt-2 mb-2" style={{ fontSize: "12px" }}>
+        <section className="container mt-2 mb-2" style={{ fontSize: "12px", maxWidth: '600px' }}>
           <div className="card p-3">
             <div className="markup -pvs">
               <img src="https://res.cloudinary.com/ddsfhaly2/image/upload/v1700857063/Green_and_White_Conceptual_New_Season_Billboard_miwpcn.png"
