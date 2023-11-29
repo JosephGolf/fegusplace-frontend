@@ -103,7 +103,7 @@ const Header = (props) => {
               </div>
 
               <div className="position-relative d-inline ml-2">
-                <Link to="/cart" className="btn btn-warning">
+                <Link to="/cart" className="btn btn-secondary" style={{ color: 'secondary' }}>
                   <IconCart3 className="i-va" />
                   <div className="position-absolute top-0 left-100 translate-middle badge bg-danger rounded-circle">
                     {props.totalItem > 0 ? props.totalItem : null}
