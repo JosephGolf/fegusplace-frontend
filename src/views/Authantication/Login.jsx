@@ -195,7 +195,7 @@ setFeedBackAlert("error");
         <Row>
           <Col md={6} className="pl-5">
             <Row className="d-flex justify-content-center align-items-center ">
-              <span style={{ color: "#E012F7", fontWeight: "bolder" }}>
+              <span style={{ color: "#000080", fontWeight: "bolder" }}>
                 {t("login")}
               </span>
             </Row>
@@ -327,7 +327,7 @@ setFeedBackAlert("error");
               >
                 <h4
                   style={{
-                    color: "#E012F7",
+                    color: "#000080",
                     fontWeight: "bolder",
                     marginLeft: "30px",
                   }}
