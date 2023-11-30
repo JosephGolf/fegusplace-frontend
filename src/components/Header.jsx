@@ -63,19 +63,21 @@ const Header = (props) => {
                     aria-label="Profile"
                 >
                   <i className="fa fa-user mr-1"></i>
-                  {props.user.name ? props.user.name : `${t("login")}`}
+                  {props.user.name ? props.user.name :`${t("login")}`}
+
+                  {/* {props.userLogin&&props.userLogin } */}
                   <i className="fa fa-arrow-down ml-1"></i>
                 </button>
                 <ul className="dropdown-menu">
                   <li
-                      style={{ display: props.user.name ? "block" : "none" }}
+                      style={{ display: "none" }}
                       className={props.user.name ? "d-block" : ""}
                   >
                     <Link className="dropdown-item" to="/account/orders">
                       <IconPersonBadgeFill /> My Profile
                     </Link>
                   </li>
-                  <div style={{ display: props.user.name ? "none" : "block" }}>
+                  <div className={props.user.name ? "d-none" : ""}>
                     <li>
                       <Link className="dropdown-item" to="/account/login">
                         {t("login")} <i className="fa fa-sign-in-alt" />
@@ -87,17 +89,16 @@ const Header = (props) => {
                       </Link>
                     </li>
                   </div>
-                  <li style={{ display: props.user.name ? "block" : "none" }}>
+                  <li className={props.user.name ? "" : "d-none"}>
                     <hr className="dropdown-divider" />
                   </li>
-                  <li style={{ display: props.user.name ? "block" : "none" }}>
+                  <li className={props.user.name ? "" : "d-none"}>
                     <Link to="/" className="dropdown-item" onClick={logOut}>
                       <IconDoorClosedFill className="text-danger" /> Logout
                     </Link>
                   </li>
                 </ul>
               </div>
-
               <div className="btn-group">
                 <LanguageSwitcher />
               </div>
