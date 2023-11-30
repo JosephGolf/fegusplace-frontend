@@ -140,11 +140,12 @@ class HomeViewClass extends Component {
         </div>
       </div>
     ));
-    console.log(':-datass' + this.state.suerpMarkets);
+
     function setProductCat(catNAme) {
       console.log("catName", catNAme);
       return catNAme;
     }
+    console.log(':-datass' + this.state.suerpMarkets);
 
     return (
       <React.Fragment>
