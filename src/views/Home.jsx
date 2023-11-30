@@ -140,7 +140,7 @@ class HomeViewClass extends Component {
         </div>
       </div>
     ));
-    console.log(':-datas' + this.state.suerpMarkets);
+    console.log(':-datass' + this.state.suerpMarkets);
     function setProductCat(catNAme) {
       console.log("catName", catNAme);
       return catNAme;
