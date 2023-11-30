@@ -163,6 +163,8 @@ class HomeViewClass extends Component {
 
             </div>
 
+            <br />
+
             <div className="col-md-2">
               <div className="card p-3" style={{ maxWidth: '100%', width: '100%', height: '100%' }}>
                 <div className="markup -pvs">
