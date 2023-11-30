@@ -50,7 +50,7 @@ const { t } = useTranslation();
     textButton={t("registerWithFacebook")}
     fields="name,email,picture"
     onClick={componentClicked}
-    callback={responseFacebook} />,
+    callback={responseFacebook} />
 
         </>
     )
