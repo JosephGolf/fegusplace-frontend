@@ -28,7 +28,7 @@ const TopMenu = (props) => {
   console.log("Data", props.data);
   return (
     <nav id="vertical-menu">
-        <h2 className="my-4">Category  </h2>
+        <h2 className="my-4" style={{ fontFamily: 'ABeeZee' }}>Category  </h2>
       <ul className="main-menu">
         {props.data.map((item, index) => (
           <li
