@@ -248,9 +248,6 @@ class HomeViewClass extends Component {
           </div>
         </div>
 
-       
-
-
         {/*<div className="container">
           <div className="row">
             {this.state.two_img_ad.map((item) => (
