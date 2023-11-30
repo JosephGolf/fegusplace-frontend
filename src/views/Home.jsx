@@ -1,6 +1,4 @@
 import React, { lazy, Component } from "react";
-import { Link } from "react-router-dom";
-// import { link45, file, check2all } from "../npm/icon";
 import { useTranslation } from "react-i18next";
 import { data } from "../data";
 import Slider from "./product/slider";
@@ -21,9 +19,11 @@ const Carousel = lazy(() => import("../components/carousel/Carousel"));
 const CardIcon = lazy(() => import("../components/card/CardIcon"));
 const CardLogin = lazy(() => import("../components/card/CardLogin"));
 const CardImage = lazy(() => import("../components/card/CardImage"));
+const CustomCarousel = lazy(() => import("../components/carousel/CustomCarousel"));
 const CardDealsOfTheDay = lazy(() =>
   import("../components/card/CardDealsOfTheDay")
 );
+
 class HomeViewClass extends Component {
   components = {
     IconLaptop: IconLaptop,
@@ -140,6 +140,7 @@ class HomeViewClass extends Component {
         </div>
       </div>
     ));
+    console.log(':-datas' + this.state.suerpMarkets);
     function setProductCat(catNAme) {
       console.log("catName", catNAme);
       return catNAme;
@@ -153,21 +154,13 @@ class HomeViewClass extends Component {
               <TopMenu data={this.state.cats} />
             </div>
             <div className="col-md-8">
-              <Banner
-                className="mb-3"
-                id="carouselHomeBanner"
-                data={this.state.sliders}
-                onClick={(e) => setProductCat(e.target)}
+              <CustomCarousel
+                  data={this.state.sliders}
+                  imageWidth="500px"
+                  imageHeight="500px"
               />
-            </div>
-            <div className="col-md-2">
-              <div className="card p-3" style={{ maxWidth: '100%', width: '100%' , height: '83%'}}>
-                <div className="markup -pvs" style={{ maxWidth: '100%', width: '100%' , height: '100%'}}>
-                  <img src="https://res.cloudinary.com/ddsfhaly2/image/upload/v1700857063/Green_and_White_Conceptual_New_Season_Billboard_miwpcn.png"
-                       alt="Place Your Ad"
-                       style={{ maxWidth: '100%', maxHeight: '3in', width: '100%', height: '100%' }}/>
-                </div>
-              </div>
+
+
             </div>
           </div>
         </div>
@@ -246,7 +239,7 @@ class HomeViewClass extends Component {
             </div>
             <div className="col-md-8">
               <div className="card p-2">
-                <div className="card-header" style={{ backgroundColor: '#000080', color: 'white'}}>
+                <div className="card-header" style={{ backgroundColor: 'pink' }}>
                   <h4>{this.props.trans('superMarket')}</h4>
                 </div>
                 <Slider data={this.state.suerpMarkets} />
@@ -254,6 +247,9 @@ class HomeViewClass extends Component {
             </div>
           </div>
         </div>
+
+       
+
 
         {/*<div className="container">
           <div className="row">
@@ -266,7 +262,7 @@ class HomeViewClass extends Component {
             ))}
           </div>
         </div>*/}
-        <section className="container mt-2 mb-2" style={{ fontSize: "12px", maxWidth: '1115px' }}>
+        <section className="container mt-2 mb-2" style={{ fontSize: "12px" }}>
           <div className="card p-3">
             <div className="markup -pvs">
               <img src="https://res.cloudinary.com/ddsfhaly2/image/upload/v1700857063/Green_and_White_Conceptual_New_Season_Billboard_miwpcn.png"
