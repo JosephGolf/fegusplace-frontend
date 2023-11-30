@@ -25,104 +25,102 @@ const Header = (props) => {
     localStorage.removeItem("token");
     window.location.href = "/";
   };
-
   return (
-      <React.Fragment>
-        <div
-            className="reg"
-            style={{ width: "100%", background: "#232323", textAlign: "center" }}
-        >
-          <img
-              src={fegusplacecoverimage}
-              style={{ maxWidth: "100%", maxHeight: "2in", width: "100%", height: "auto" }}
-          />
-        </div>
+    <React.Fragment>
+      <div
+        className="reg"
+        style={{ width: "100%", background: "#232323", textAlign: "center" }}
+      >
+        <img
+          src={fegusplacecoverimage}
+          // style={{ width: "225vh", height:"20vh", margin: "auto" }}
+          style={{ maxWidth: '100%', maxHeight: '2in', width: '100%', height: 'auto' }}
+        />
+      </div>
 
-        <header className="p-3 border-bottom bg-light">
-          <div className="container-fluid">
-            <div className="row g-3">
-              <div className="col-md-3 text-center">
-                <Link to="/">
-                  <img
-                      alt="logo"
-                      src={fegusplace}
-                      style={{ width: "100px" }}
-                  />
+      <header className="p-3 border-bottom bg-light">
+        <div className="container-fluid">
+          <div className="row g-3">
+            <div className="col-md-3 text-center">
+              <Link to="/">
+                <img
+                    alt="logo"
+                    src={fegusplace}
+                    style={{ width: "100px" }}
+                />
+              </Link>
+            </div>
+            <div className="col-md-4">
+              <Search />
+            </div>
+            <div className="col-md-5">
+              {/*login button group*/}
+              <div className="btn-group">
+                <button
+                    type="button"
+                    className="btn btn-secondary border mr-3 dropdown-toggle1"
+                    data-toggle="dropdown"
+                    aria-expanded="false"
+                    aria-label="Profile"
+                >
+                  <i className="fa fa-user mr-1"></i>
+                  {props.user.name ? props.user.name :`${t("login")}`}
+
+                  {/* {props.userLogin&&props.userLogin } */}
+                  <i className="fa fa-arrow-down ml-1"></i>
+                </button>
+                <ul className="dropdown-menu">
+                  <li
+                      style={{ display: "none" }}
+                      className={props.user.name ? "d-block" : ""}
+                  >
+                    <Link className="dropdown-item" to="/account/orders">
+                      <IconPersonBadgeFill /> My Profile
+                    </Link>
+                  </li>
+                  <div className={props.user.name ? "d-none" : ""}>
+                    <li>
+                      <Link className="dropdown-item" to="/account/login">
+                        {t("login")} <i className="fa fa-sign-in-alt" />
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="dropdown-item" to="/account/signup">
+                        {t("createAccount")} <i className="fa fa-plus" />
+                      </Link>
+                    </li>
+                  </div>
+                  <li className={props.user.name ? "" : "d-none"}>
+                    <hr className="dropdown-divider" />
+                  </li>
+                  <li className={props.user.name ? "" : "d-none"}>
+                    <Link to="/" className="dropdown-item" onClick={logOut}>
+                      <IconDoorClosedFill className="text-danger" /> Logout
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div className="btn-group">
+                <LanguageSwitcher />
+              </div>
+
+              <div className="position-relative d-inline ml-2">
+                <Link to="/cart" className="btn btn-secondary" style={{ color: 'secondary' }}>
+                  <IconCart3 className="i-va" />
+                  <div className="position-absolute top-0 left-100 translate-middle badge bg-danger rounded-circle">
+                    {props.totalItem > 0 ? props.totalItem : null}
+                  </div>
                 </Link>
               </div>
-
-              <div className="col-md-4">
-                <Search />
-              </div>
-
-              <div className="col-md-5">
-                {/* Login button group */}
-                <div className="btn-group">
-                  <button
-                      className="btn btn-secondary border mr-3 dropdown-toggle"
-                      type="button"
-                      id="dropdownMenuButton"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                  >
-                    <i className="fa fa-user mr-1"></i>
-                    {props.user.name ? props.user.name : `${t("login")}`}
-                    <i className="fa fa-arrow-down ml-1"></i>
-                  </button>
-
-                  <div
-                      className="dropdown-menu"
-                      aria-labelledby="dropdownMenuButton"
-                  >
-                    {props.user.name ? (
-                        <Link className="dropdown-item" to="/account/orders">
-                          <IconPersonBadgeFill /> My Profile
-                        </Link>
-                    ) : (
-                        <>
-                          <Link className="dropdown-item" to="/account/login">
-                            {t("login")} <i className="fa fa-sign-in-alt" />
-                          </Link>
-
-                          <Link className="dropdown-item" to="/account/signup">
-                            {t("createAccount")} <i className="fa fa-plus" />
-                          </Link>
-                        </>
-                    )}
-
-                    {props.user.name && (
-                        <Link
-                            to="/"
-                            className="dropdown-item"
-                            onClick={logOut}
-                        >
-                          <IconDoorClosedFill className="text-danger" /> Logout
-                        </Link>
-                    )}
-                  </div>
-                </div>
-
-                <div className="btn-group">
-                  <LanguageSwitcher />
-                </div>
-
-                <div className="position-relative d-inline ml-2">
-                  <Link to="/cart" className="btn btn-secondary" style={{ color: 'secondary' }}>
-                    <IconCart3 className="i-va" />
-                    <div className="position-absolute top-0 left-100 translate-middle badge bg-danger rounded-circle">
-                      {props.totalItem > 0 ? props.totalItem : null}
-                    </div>
-                  </Link>
-                </div>
-              </div>
             </div>
+
           </div>
-        </header>
-      </React.Fragment>
+        </div>
+      </header>
+
+    </React.Fragment>
   );
 };
-
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getUserInfo: () => {
@@ -130,12 +128,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
   };
 };
-
 const mapStateToProps = (state, ownProps) => {
   return {
     user: state.productReducer.userInfo,
     totalItem: state.productReducer.items,
   };
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
