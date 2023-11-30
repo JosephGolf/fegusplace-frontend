@@ -57,7 +57,7 @@ const Header = (props) => {
 
               <div className="col-md-5">
                 {/* Login button group */}
-                <div className="dropdown">
+                <div className="btn-group">
                   <button
                       className="btn btn-secondary border mr-3 dropdown-toggle"
                       type="button"
@@ -75,11 +75,11 @@ const Header = (props) => {
                       className="dropdown-menu"
                       aria-labelledby="dropdownMenuButton"
                   >
-                    <Link className="dropdown-item" to="/account/orders">
-                      <IconPersonBadgeFill /> My Profile
-                    </Link>
-
-                    {!props.user.name && (
+                    {props.user.name ? (
+                        <Link className="dropdown-item" to="/account/orders">
+                          <IconPersonBadgeFill /> My Profile
+                        </Link>
+                    ) : (
                         <>
                           <Link className="dropdown-item" to="/account/login">
                             {t("login")} <i className="fa fa-sign-in-alt" />
@@ -107,24 +107,22 @@ const Header = (props) => {
                   <LanguageSwitcher />
                 </div>
 
-
-                    <div className="position-relative d-inline ml-2">
-                <Link to="/cart" className="btn btn-secondary" style={{ color: 'secondary' }}>
-                  <IconCart3 className="i-va" />
-                  <div className="position-absolute top-0 left-100 translate-middle badge bg-danger rounded-circle">
-                    {props.totalItem > 0 ? props.totalItem : null}
-                  </div>
-                </Link>
+                <div className="position-relative d-inline ml-2">
+                  <Link to="/cart" className="btn btn-secondary" style={{ color: 'secondary' }}>
+                    <IconCart3 className="i-va" />
+                    <div className="position-absolute top-0 left-100 translate-middle badge bg-danger rounded-circle">
+                      {props.totalItem > 0 ? props.totalItem : null}
+                    </div>
+                  </Link>
+                </div>
               </div>
             </div>
-
           </div>
-        </div>
-      </header>
-
-    </React.Fragment>
+        </header>
+      </React.Fragment>
   );
 };
+
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     getUserInfo: () => {
@@ -132,10 +130,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
   };
 };
+
 const mapStateToProps = (state, ownProps) => {
   return {
     user: state.productReducer.userInfo,
     totalItem: state.productReducer.items,
   };
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
