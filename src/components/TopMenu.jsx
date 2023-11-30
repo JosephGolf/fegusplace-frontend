@@ -49,7 +49,7 @@ const TopMenu = (props) => {
 
                   >
                     <Link to={`/category/${item.nameEn}/${sub.subCatName}`}
-                          style={{ background: '#E012F7', color: 'black', textDecoration: 'none' }}
+                          style={{ background: 'pink', color: 'black', textDecoration: 'none' }}
                     >
                       {sub.subCatName}
                     </Link>
