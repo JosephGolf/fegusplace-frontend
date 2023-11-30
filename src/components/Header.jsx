@@ -1,4 +1,5 @@
 import React from "react";
+import { Dropdown } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import Search from "./Search";
 import LanguageSwitcher from "../LanguageSwitcher";
@@ -56,6 +57,40 @@ const Header = (props) => {
             <div className="col-md-5">
               {/*login button group*/}
               <div className="btn-group">
+                <Dropdown>
+                  <Dropdown.Toggle variant="secondary" className="border mr-3" id="dropdown-basic">
+                    <i className="fa fa-user mr-1"></i>
+                    {props.user.name ? props.user.name : `${t("login")}`}
+                    <i className="fa fa-arrow-down ml-1"></i>
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    {props.user.name ? (
+                        <Dropdown.Item as={Link} to="/account/orders">
+                          <IconPersonBadgeFill /> My Profile
+                        </Dropdown.Item>
+                    ) : (
+                        <>
+                          <Dropdown.Item as={Link} to="/account/login">
+                            {t("login")} <i className="fa fa-sign-in-alt" />
+                          </Dropdown.Item>
+                          <Dropdown.Item as={Link} to="/account/signup">
+                            {t("createAccount")} <i className="fa fa-plus" />
+                          </Dropdown.Item>
+                        </>
+                    )}
+                    {props.user.name && (
+                        <>
+                          <Dropdown.Divider />
+                          <Dropdown.Item onClick={logOut}>
+                            <IconDoorClosedFill className="text-danger" /> Logout
+                          </Dropdown.Item>
+                        </>
+                    )}
+                  </Dropdown.Menu>
+                </Dropdown>
+              </div>
+              {/*<div className="btn-group">
                 <button
                     type="button"
                     className="btn btn-secondary border mr-3 dropdown-toggle1"
@@ -66,7 +101,7 @@ const Header = (props) => {
                   <i className="fa fa-user mr-1"></i>
                   {props.user.name ? props.user.name :`${t("login")}`}
 
-                  {/* {props.userLogin&&props.userLogin } */}
+                   {props.userLogin&&props.userLogin }
                   <i className="fa fa-arrow-down ml-1"></i>
                 </button>
                 <ul className="dropdown-menu">
@@ -99,7 +134,7 @@ const Header = (props) => {
                     </Link>
                   </li>
                 </ul>
-              </div>
+              </div>*/}
               <div className="btn-group">
                 <LanguageSwitcher />
               </div>
