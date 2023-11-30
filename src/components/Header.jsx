@@ -43,7 +43,11 @@ const Header = (props) => {
             <div className="row g-3">
               <div className="col-md-3 text-center">
                 <Link to="/">
-                  <img alt="logo" src={fegusplace} style={{ width: "100px" }} />
+                  <img
+                      alt="logo"
+                      src={fegusplace}
+                      style={{ width: "100px" }}
+                  />
                 </Link>
               </div>
 
@@ -75,38 +79,36 @@ const Header = (props) => {
                       <IconPersonBadgeFill /> My Profile
                     </Link>
 
-                    {
-                        !props.user.name && (
-                            <>
-                              <Link className="dropdown-item" to="/account/login">
-                                {t("login")} <i className="fa fa-sign-in-alt" />
-                              </Link>
+                    {!props.user.name && (
+                        <>
+                          <Link className="dropdown-item" to="/account/login">
+                            {t("login")} <i className="fa fa-sign-in-alt" />
+                          </Link>
 
-                              <Link className="dropdown-item" to="/account/signup">
-                                {t("createAccount")} <i className="fa fa-plus" />
-                              </Link>
-                            </>
-                        )
-                    }
+                          <Link className="dropdown-item" to="/account/signup">
+                            {t("createAccount")} <i className="fa fa-plus" />
+                          </Link>
+                        </>
+                    )}
 
-                    {
-                        props.user.name && (
-                            <Link
-                                to="/"
-                                className="dropdown-item"
-                                onClick={logOut}
-                            >
-                              <IconDoorClosedFill className="text-danger" /> Logout
-                            </Link>
-                        )
-                    }
+                    {props.user.name && (
+                        <Link
+                            to="/"
+                            className="dropdown-item"
+                            onClick={logOut}
+                        >
+                          <IconDoorClosedFill className="text-danger" /> Logout
+                        </Link>
+                    )}
                   </div>
                 </div>
 
                 <div className="btn-group">
                   <LanguageSwitcher />
                 </div>
-              <div className="position-relative d-inline ml-2">
+
+
+                    <div className="position-relative d-inline ml-2">
                 <Link to="/cart" className="btn btn-secondary" style={{ color: 'secondary' }}>
                   <IconCart3 className="i-va" />
                   <div className="position-absolute top-0 left-100 translate-middle badge bg-danger rounded-circle">
