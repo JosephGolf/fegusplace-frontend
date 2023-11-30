@@ -164,7 +164,7 @@ class HomeViewClass extends Component {
             </div>
 
             <div className="col-md-2">
-              <div className="card p-3">
+              <div className="card p-3"  style={{ maxWidth: '100%', width: '100%' }}>
                 <div className="markup -pvs">
                   <img src="https://res.cloudinary.com/ddsfhaly2/image/upload/v1700857063/Green_and_White_Conceptual_New_Season_Billboard_miwpcn.png"
                        alt="Place Your Ad"
