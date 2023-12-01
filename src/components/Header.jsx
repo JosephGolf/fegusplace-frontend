@@ -1,4 +1,5 @@
 import React from "react";
+import { Dropdown } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import Search from "./Search";
 import LanguageSwitcher from "../LanguageSwitcher";
@@ -54,52 +55,42 @@ const Header = (props) => {
               <Search />
             </div>
             <div className="col-md-5">
-              {/*login button group*/}
+              {/* Login button group */}
               <div className="btn-group">
-                <button
-                    type="button"
-                    className="btn btn-secondary border mr-3 dropdown-toggle1"
-                    data-toggle="dropdown"
-                    aria-expanded="false"
-                    aria-label="Profile"
-                >
-                  <i className="fa fa-user mr-1"></i>
-                  {props.user.name ? props.user.name :`${t("login")}`}
+                <Dropdown>
+                  <Dropdown.Toggle variant="secondary" className="border mr-3" id="dropdown-basic">
+                    <i className="fa fa-user mr-1"></i>
+                    {props.user.name ? props.user.name : `${t("login")}`}
+                    <i className="fa fa-arrow-down ml-1"></i>
+                  </Dropdown.Toggle>
 
-                  {/* {props.userLogin&&props.userLogin } */}
-                  <i className="fa fa-arrow-down ml-1"></i>
-                </button>
-                <ul className="dropdown-menu">
-                  <li
-                      style={{ display: "none" }}
-                      className={props.user.name ? "d-block" : ""}
-                  >
-                    <Link className="dropdown-item" to="/account/orders">
-                      <IconPersonBadgeFill /> My Profile
-                    </Link>
-                  </li>
-                  <div className={props.user.name ? "d-none" : ""}>
-                    <li>
-                      <Link className="dropdown-item" to="/account/login">
-                        {t("login")} <i className="fa fa-sign-in-alt" />
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="dropdown-item" to="/account/signup">
-                        {t("createAccount")} <i className="fa fa-plus" />
-                      </Link>
-                    </li>
-                  </div>
-                  <li className={props.user.name ? "" : "d-none"}>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li className={props.user.name ? "" : "d-none"}>
-                    <Link to="/" className="dropdown-item" onClick={logOut}>
-                      <IconDoorClosedFill className="text-danger" /> Logout
-                    </Link>
-                  </li>
-                </ul>
+                  <Dropdown.Menu>
+                    {props.user.name ? (
+                        <Dropdown.Item as={Link} to="/account/orders">
+                          <IconPersonBadgeFill /> My Profile
+                        </Dropdown.Item>
+                    ) : (
+                        <>
+                          <Dropdown.Item as={Link} to="/account/login">
+                            {t("login")} <i className="fa fa-sign-in-alt" />
+                          </Dropdown.Item>
+                          <Dropdown.Item as={Link} to="/account/signup">
+                            {t("createAccount")} <i className="fa fa-plus" />
+                          </Dropdown.Item>
+                        </>
+                    )}
+                    {props.user.name && (
+                        <>
+                          <Dropdown.Divider />
+                          <Dropdown.Item onClick={logOut}>
+                            <IconDoorClosedFill className="text-danger" /> Logout
+                          </Dropdown.Item>
+                        </>
+                    )}
+                  </Dropdown.Menu>
+                </Dropdown>
               </div>
+
               <div className="btn-group">
                 <LanguageSwitcher />
               </div>
