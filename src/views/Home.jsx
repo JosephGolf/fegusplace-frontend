@@ -146,8 +146,6 @@ class HomeViewClass extends Component {
       return catNAme;
     }
     console.log(':-datass' + this.state.suerpMarkets);
-    const uniqueCategories = [...new Set(this.state.suerMarkets.map(product => product.product_cat.main))];
-
 
     return (
       <React.Fragment>
