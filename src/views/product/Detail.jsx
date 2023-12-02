@@ -151,6 +151,8 @@ function ProductDetailView(props) {
               </Tabs>
             </div>
           </div>
+
+
           {/*<div className="row">
             <div className="col-md-12">
               <nav>
