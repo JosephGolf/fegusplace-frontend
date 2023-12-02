@@ -2,6 +2,7 @@ import React, { useEffect, lazy } from "react";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactStars from "react-rating-stars-component";
+import { Tab, Tabs } from 'react-bootstrap';
 import {
   faCartPlus,
   faMinus,
@@ -137,6 +138,21 @@ function ProductDetailView(props) {
           </div>
           <div className="row">
             <div className="col-md-12">
+              <Tabs defaultActiveKey="nav-details" id="nav-tab">
+                <Tab eventKey="nav-details" title="Details">
+                  <Details description={product.description} />
+                </Tab>
+                <Tab eventKey="nav-randr" title="Ratings & Reviews">
+                  <RatingsReviews productID={product._id} />
+                </Tab>
+                <Tab eventKey="nav-ship-returns" title="Shipping & Returns">
+                  <ShippingReturns />
+                </Tab>
+              </Tabs>
+            </div>
+          </div>
+          {/*<div className="row">
+            <div className="col-md-12">
               <nav>
                 <div className="nav nav-tabs" id="nav-tab" role="tablist">
                   <a
@@ -202,7 +218,7 @@ function ProductDetailView(props) {
                 </div>
               </div>
             </div>
-          </div>
+          </div>*/}
 
 
         </div>
