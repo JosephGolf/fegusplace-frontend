@@ -24,9 +24,9 @@ props.data.map((item=>
             <div className="card-body">
             <div className="mb-3">
                 <p className="font-weight-bold h5 mr-2">
-                    { formatCurrency(parseFloat(item.price) - (parseFloat(item.price) * parseFloat(item.discount)) / 100) }
+                    { formatCurrency(parseFloat(item.price) ) }
                 </p>
-                <del className="small text-muted mr-2">{formatCurrency(item.price)}</del>
+                {/*<del className="small text-muted mr-2">{formatCurrency(item.price)}</del>*/}
                 <span className="rounded p-1 bg-warning  mr-2 small">
                   {item.discount}%
                 </span>

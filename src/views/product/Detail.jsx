@@ -52,6 +52,12 @@ function ProductDetailView(props) {
     value: 4,
     edit: false,
   };
+  function formatCurrency(amount) {
+    return amount.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'NGN',
+    });
+  }
   return (
     <div className="container-fluid mt-3">
       <div className="row">
@@ -77,9 +83,9 @@ function ProductDetailView(props) {
 
               <div className="mb-3">
                 <p className="font-weight-bold h5 mr-2">
-                  EGP{product.price - (product.price * product.discount) / 100}
+                  {formatCurrency(product.price)}
                 </p>
-                <del className="small text-muted mr-2">EGP{product.price}</del>
+                {/*<del className="small text-muted mr-2">EGP{product.price}</del>*/}
                 <span className="rounded p-1 bg-warning  mr-2 small">
                   {product.discount}%
                 </span>
@@ -129,7 +135,7 @@ function ProductDetailView(props) {
               </div>
             </div>
           </div>
-          <div className="row">
+          {/*<div className="row">
             <div className="col-md-12">
               <nav>
                 <div className="nav nav-tabs" id="nav-tab" role="tablist">
@@ -196,7 +202,50 @@ function ProductDetailView(props) {
                 </div>
               </div>
             </div>
+          </div>*/}
+          <div className="row">
+            <div className="col-md-12">
+              <ul className="nav nav-tabs" role="tablist">
+                <li role="presentation" className="active">
+                  <a href="#nav-details" aria-controls="nav-details" role="tab" data-toggle="tab">
+                    Details
+                  </a>
+                </li>
+                <li role="presentation">
+                  <a href="#nav-randr" aria-controls="nav-randr" role="tab" data-toggle="tab">
+                    Ratings & Reviews
+                  </a>
+                </li>
+                <li role="presentation">
+                  <a href="#nav-ship-returns" aria-controls="nav-ship-returns" role="tab" data-toggle="tab">
+                    Shipping & Returns
+                  </a>
+                </li>
+              </ul>
+
+              <div className="tab-content p-3 small">
+                <div
+                    className="tab-pane fade in active"
+                    id="nav-details"
+                >
+                  <Details description={product.description} />
+                </div>
+                <div
+                    className="tab-pane fade"
+                    id="nav-randr"
+                >
+                  <RatingsReviews productID={product._id} />
+                </div>
+                <div
+                    className="tab-pane fade"
+                    id="nav-ship-returns"
+                >
+                  <ShippingReturns />
+                </div>
+              </div>
+            </div>
           </div>
+
         </div>
         <div className="col-md-4">
           <CardFeaturedProduct data={products} />
