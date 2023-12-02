@@ -16,6 +16,12 @@ import { useTranslation } from "react-i18next";
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
+function formatCurrency(amount) {
+  return amount.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'NGN',
+  });
+}
 
 function getModalStyle() {
   const top = 50 + rand();
@@ -349,7 +355,7 @@ const body = (
                 </div>
 
                 <div className="col-2 d-flex justify-content-center flex-column">
-               <p> {t("currency")}{parseFloat(item.price)}
+               <p> {t("currency")}{formatCurrency(parseFloat(item.price))}
                <span               
                className='rounded p-1 bg-warning  mr-2 small'
                > {item.discount}%</span></p>
@@ -359,7 +365,7 @@ const body = (
                   className="col-2 d-flex justify-content-center"
                   style={{ color: "orange", fontWeight: "bolder" }}
                 >
-                  {t("currency")} {subTotalPrice(index)}
+                  {t("currency")} {formatCurrency(subTotalPrice(index))}
                 </div>
               
               
@@ -427,7 +433,7 @@ const body = (
             <div>
               <h2 style={{ fontWeight: "bold" }}>
                 {" "}
-                {t("total")}: {t("currency")} <span style={{ color: "orangered" }}>{total.toFixed(2)}</span>
+                {t("total")}: {t("currency")} <span style={{ color: "orangered" }}>{formatCurrency(total.toFixed(2))}</span>
               </h2>
             </div>
           </div>
