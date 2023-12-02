@@ -355,7 +355,7 @@ const body = (
                 </div>
 
                 <div className="col-2 d-flex justify-content-center flex-column">
-               <p> {t("currency")}{formatCurrency(parseFloat(item.price))}
+               <p> {formatCurrency(parseFloat(item.price))}
                <span               
                className='rounded p-1 bg-warning  mr-2 small'
                > {item.discount}%</span></p>
@@ -365,7 +365,7 @@ const body = (
                   className="col-2 d-flex justify-content-center"
                   style={{ color: "orange", fontWeight: "bolder" }}
                 >
-                  {t("currency")} {formatCurrency(subTotalPrice(index))}
+                  {formatCurrency(subTotalPrice(index))}
                 </div>
               
               
@@ -433,7 +433,7 @@ const body = (
             <div>
               <h2 style={{ fontWeight: "bold" }}>
                 {" "}
-                {t("total")}: {t("currency")} <span style={{ color: "orangered" }}>{formatCurrency(total.toFixed(2))}</span>
+                {t("total")}: <span style={{ color: "orangered" }}>{formatCurrency(parseFloat(total))}</span>
               </h2>
             </div>
           </div>
