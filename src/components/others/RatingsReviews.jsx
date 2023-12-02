@@ -31,6 +31,7 @@ const RatingsReviews = (props) => {
     if (props.productID) {
       homeServices.getProductReview(props.productID).then((data) => {
         setReviews(data.data);
+        console.log(data.data);
         const userAlreadyReviewed = data.data.some((review) => review.userName === props.user.name);
         setUserHasReviewed(userAlreadyReviewed);
       });
