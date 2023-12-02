@@ -31,7 +31,7 @@ const RatingsReviews = (props) => {
     if (props.productID) {
       homeServices.getProductReview(props.productID).then((data) => {
         setReviews(data.data);
-        console.log(data.data);
+        /*console.log(data.data);*/
         const userAlreadyReviewed = data.data.some((review) => review.userName === props.user.name);
         setUserHasReviewed(userAlreadyReviewed);
       });
@@ -46,8 +46,8 @@ const RatingsReviews = (props) => {
       }
 
       homeServices.addReview(productID, userName, rating, reviewText, createdAt)
-          .then((data) => {
-            console.log(data);
+          .then(() => {
+            /*console.log(data);*/
             window.location.reload();
           });
       homeServices.getProductReview(props.productID).then((data) => {

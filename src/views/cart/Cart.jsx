@@ -183,7 +183,7 @@ const body = (
   const subTotalPrice = (index) => {
     const product = cart[index];
    
-    const total = product.selectedQuantity * (product.price - (product.price * product.discount) / 100);
+    const total = parseFloat(product.selectedQuantity * product.price);
     // Total(total)
     Total(total);
     return total;
@@ -349,11 +349,11 @@ const body = (
                 </div>
 
                 <div className="col-2 d-flex justify-content-center flex-column">
-               <p> {t("currency")}{item.price - (item.price * item.discount) / 100}   
+               <p> {t("currency")}{parseFloat(item.price)}
                <span               
                className='rounded p-1 bg-warning  mr-2 small'
                > {item.discount}%</span></p>
-               <p className='small text-muted mr-2' style={{textDecoration:'line-through'}}> {t("currency")} {item.price}</p>
+               {/*<p className='small text-muted mr-2' style={{textDecoration:'line-through'}}> {t("currency")} {parseFloat(item.price)}</p>*/}
                 </div>
                 <div
                   className="col-2 d-flex justify-content-center"
