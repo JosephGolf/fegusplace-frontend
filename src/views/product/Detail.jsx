@@ -83,7 +83,7 @@ function ProductDetailView(props) {
 
               <div className="mb-3">
                 <p className="font-weight-bold h5 mr-2">
-                  {formatCurrency(product.price)}
+                  {formatCurrency(parseFloat(product.price))}
                 </p>
                 {/*<del className="small text-muted mr-2">EGP{product.price}</del>*/}
                 <span className="rounded p-1 bg-warning  mr-2 small">
