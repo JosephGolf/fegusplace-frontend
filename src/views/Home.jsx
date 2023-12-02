@@ -146,6 +146,8 @@ class HomeViewClass extends Component {
       return catNAme;
     }
     console.log(':-datass' + this.state.suerpMarkets);
+    const uniqueCategories = [...new Set(this.state.suerMarkets.map(product => product.product_cat.main))];
+
 
     return (
       <React.Fragment>
@@ -254,7 +256,7 @@ class HomeViewClass extends Component {
             <div className="col-md-8">
               <div className="card p-2">
                 <div className="card-header" style={{ backgroundColor: '#000080', color: 'white' }}>
-                  <h4>{this.props.trans('superMarket')}</h4>
+                  <h4>{this.props.trans('Products')}</h4>
                 </div>
                 <Slider data={this.state.suerpMarkets} />
               </div>
