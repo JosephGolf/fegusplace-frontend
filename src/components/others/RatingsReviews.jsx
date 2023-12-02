@@ -37,8 +37,8 @@ const RatingsReviews = (props) => {
     if (productID && userName && rating && reviewText && createdAt) {
       homeServices
         .addReview(productID, userName, rating, reviewText, createdAt)
-        .then((data) => {
-          console.log(data);
+        .then(() => {
+          window.location.reload();
         });
       homeServices.getProductReview(props.productID).then((data) => {
         setReviews(data.data);
