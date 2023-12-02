@@ -99,7 +99,7 @@ const RatingsReviews = (props) => {
                     <span className="text-muted">
                 <IconCheckCircleFill className="text-success mr-1" />
                       {review.userName} | Reviewed on{" "}
-                      <i className="font-weight-bold">{review.createdAt}</i>
+                      <i className="font-weight-bold">{new Date(review.createdAt).toLocaleDateString()}</i>
               </span>
                     <p className="my-3">{review.reviewText}</p>
                   </div>
