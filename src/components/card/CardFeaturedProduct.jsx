@@ -33,9 +33,9 @@ const CardFeaturedProduct = (props) => {
                 ))}
               </div>
               <p className="font-weight-bold h5">
-                ${product.price - (product.price * product.discount) / 100}
+                  NGN{parseFloat(product.price)}
               </p>
-              <del className="small text-muted mr-2">${product.price}</del>
+              {/*<del className="small text-muted mr-2">${product.price}</del>*/}
               <span className="rounded p-1 bg-warning  mr-2 small">
                 {product.discount}%
               </span>

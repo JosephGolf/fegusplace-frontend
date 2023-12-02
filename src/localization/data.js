@@ -41,7 +41,7 @@ const resources = {
       help: "help",
       lang: "language",
       top_search: "Search for products",
-      offical: "Offical stores",
+      offical: "Official stores",
       address:"Address",
       address2:"Address 2 option",
       fegusplaceDoniation: "Fegusplace Doniation",
@@ -78,12 +78,12 @@ const resources = {
       Morocco: "Morocco",
       shippingInfo:"Shipping Information",
       CustomService: "Custom Service",
-      Delivery: { title: "Free Delivery", body: "From $59.89" },
+      Delivery: { title: "Free Delivery", body: "From NGN 1000" },
       Support: { title: "Support 24/7", body: "Online 24 hours" },
       return: { title: "Free Return", body: "365 a day" },
 
       shipping: {
-        title: "Your order of 100$ or more gets free standard delivery.",
+        title: "Your order of NGN 1000 or more gets free standard delivery.",
         details: "Standard delivered 4-5 Business Days",
         details1: "Express delivered 2-4 Business Days",       
         body:
