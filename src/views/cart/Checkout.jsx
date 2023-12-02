@@ -85,8 +85,8 @@ const CheckoutView = (props) => {
         return {
           name: item.nameEn,
           sku: item.nameEn,
-          price: item.price - (item.price * item.discount) / 100,
-          currency: "USD",
+          price: parseFloat(item.price),
+          currency: "NGN",
           quantity: item.selectedQuantity,
         };
       });
@@ -233,8 +233,8 @@ const CheckoutView = (props) => {
         return {
           name: item.nameEn,
           sku: item.nameEn,
-          price: item.price - (item.price * item.discount) / 100,
-          currency: "USD",
+          price: parseFloat(item.price),
+          currency: "NGN",
           quantity: item.selectedQuantity,
         };
       });
@@ -582,7 +582,7 @@ const CheckoutView = (props) => {
                   })}
 
                 <li className="list-group-item d-flex justify-content-between">
-                  <span>{t("total")} (N)</span>
+                  <span>{t("total")} (NGN)</span>
                   <strong>
                     {userCart &&
                       userCart.reduce((sum, next) => {

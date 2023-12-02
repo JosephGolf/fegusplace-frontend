@@ -32,7 +32,7 @@ const resources = {
       SubTotal:"SubTotal",
       quantity:"quantity",
       price:"price",
-      total:"total",
+      total:"Total",
       remove:"Remove",
       items:"Items",
       item:"Item",
