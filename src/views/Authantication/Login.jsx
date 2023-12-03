@@ -68,7 +68,7 @@ export default function Login(props) {
       setOpen(true);
       const { email, password } = values;
       axios
-        .post("http://localhost:8080/auth/login", { email, password })
+        .post("https://fegusplacebackend.onrender.com/auth/login", { email, password })
         .then((data) => {
           if (data) handleClose();
           if (data.data.token) {

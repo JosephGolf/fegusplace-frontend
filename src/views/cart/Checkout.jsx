@@ -517,8 +517,8 @@ const CheckoutView = (props) => {
                       <AccordionDetails>
                         <div>
                         <div class={`${spinner} text-info`} role="status">
-  <span className="sr-only">Loading...</span>
-</div>
+                          <span className="sr-only">Loading...</span>
+                        </div>
                           <Button
                             onClick={payment}
                             type="button"
@@ -575,7 +575,7 @@ const CheckoutView = (props) => {
                           <small className="text-muted"></small>
                         </div>
                         <span className="text-muted">
-                          N {item.price - (item.price * item.discount) / 100}
+                          NGN {parseFloat(item.price)}
                         </span>
                       </li>
                     );
@@ -588,7 +588,7 @@ const CheckoutView = (props) => {
                       userCart.reduce((sum, next) => {
                         return (
                           sum +
-                          (next.price - (next.price * next.discount) / 100) *
+                          (parseFloat(next.price)) *
                             next.selectedQuantity
                         );
                       }, 0)}
