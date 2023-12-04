@@ -339,6 +339,7 @@ const CheckoutView = (props) => {
       currency: 'NGN',
     });
   }
+  console.log(REACT_APP_PAYSTACK_PUBLIC_KEY);
 
   return (
     <React.Fragment>
