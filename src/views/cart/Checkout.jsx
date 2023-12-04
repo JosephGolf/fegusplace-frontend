@@ -233,6 +233,7 @@ const CheckoutView = (props) => {
       console.log(e);
     }
   }, [setToken, setCountries, setUserCart, setItems, setTotal]);
+  const totalPrice = localStorage.getItem("total");
   const handlePaystackCloseAction = () => {
     console.log('closed');
   };
