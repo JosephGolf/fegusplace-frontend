@@ -75,7 +75,7 @@ const CheckoutView = (props) => {
   const newEmail = isValidEmail(props.user.email) ? props.user.email : 'michaeladeshina015@gmail.com';
   const [componentProps, setComponentProps] = React.useState({
     reference: "",
-    email: props.user.email,
+    email: 'michaeladeshina015@gmail.com',
     amount: 0,
     publicKey: REACT_APP_PAYSTACK_PUBLIC_KEY,
     text: "Pay With Paystack",
