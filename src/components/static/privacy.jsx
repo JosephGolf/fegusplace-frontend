@@ -4,7 +4,7 @@ const Privacy = () => {
     <div className="card p-5">
       <h3 className="text-warning">1. About this Notice</h3>
       <p>
-        This Privacy and Cookie Notice provides information on how Jumia
+        This Privacy and Cookie Notice provides information on how Fegusplace
         collects and processes your personal data when you visit our website or
         mobile applications.
       </p>
@@ -17,7 +17,7 @@ const Privacy = () => {
         provide to us including your identity data, contact data, delivery
         address and financial data. Information on your use of our website
         and/or mobile applications: We automatically collect and store certain
-        types of information regarding your use of the Jumia marketplace
+        types of information regarding your use of the Fegusplace marketplace
         including information about your searches, views, downloads and
         purchases. Information from third parties and publicly available
         sources: We may receive information about you from third parties
