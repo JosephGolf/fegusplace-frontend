@@ -248,8 +248,9 @@ const CheckoutView = (props) => {
     }
     const totalPrice = localStorage.getItem("total");
     if (totalPrice && items) {
-      const handlePaystackSuccessAction =  async(reference) => {
-        let paymentData=reference;
+      const handlePaystackSuccessAction =  (reference) => {
+        console.log(reference);
+        /*let paymentData=reference;
         try {
           const config = {
             headers: {
@@ -266,7 +267,7 @@ const CheckoutView = (props) => {
         } catch (error) {
           setPayDisable(false);
           enqueueSnackbar(error.response.data.message, { variant: "error" });
-        }
+        }*/
 
       };
       const payStackConfig = {
