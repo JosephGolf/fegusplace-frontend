@@ -15,6 +15,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CacheOnDelivery from "./cacheOnDelivery";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
+import { PaystackButton } from 'react-paystack';
 
 import "./checkout.css";
 const useStyles = makeStyles((theme) => ({
@@ -63,6 +64,9 @@ const CheckoutView = (props) => {
   const [address2, setAddress2] = React.useState("");
   const [toggleClasses, setClasses] = React.useState(false);
   const [spinner,setSpinner]=React.useState('')
+  const REACT_APP_PAYSTACK_PUBLIC_KEY = process.env.REACT_APP_PAYSTACK_PUBLIC_KEY;
+
+
   const getCountry = (e) => {
     setFullAddress({ ...fullAddress, country: e.target.value });
     fetch(`https://www.universal-tutorial.com/api/states/${e.target.value}`, {
@@ -239,9 +243,45 @@ const CheckoutView = (props) => {
         };
       });
     });
+    const handlePaystackCloseAction = () => {
+      console.log('closed')
+    }
     const totalPrice = localStorage.getItem("total");
     if (totalPrice && items) {
-      var create_payment_json = {
+      const handlePaystackSuccessAction =  async(reference) => {
+        let paymentData=reference;
+        try {
+          const config = {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          };
+          const { data } = await axios.post(
+              '/api/v1/payment/process',
+              paymentData,
+              config,
+          );
+          const url = `/order/${data.orderId}`;
+          navigate(url);
+        } catch (error) {
+          setPayDisable(false);
+          enqueueSnackbar(error.response.data.message, { variant: "error" });
+        }
+
+      };
+      const payStackConfig = {
+        reference: (new Date()).getTime().toString(),
+        email: props.user,
+        amount: Math.round(totalPrice) * 100,
+        publicKey: REACT_APP_PAYSTACK_PUBLIC_KEY,
+      };
+      const componentProps = {
+        ...payStackConfig,
+        text: 'Pay With Paystack',
+        onSuccess: (reference) => handlePaystackSuccessAction(reference),
+        onClose: handlePaystackCloseAction,
+      };
+      /*var create_payment_json = {
         intent: "sale",
         payer: {
           payment_method: "paypal",
@@ -280,7 +320,7 @@ const CheckoutView = (props) => {
         })
         .catch((e) => {
           console.log(e);
-        });
+        });*/
     } else {
       
     }
@@ -303,6 +343,12 @@ const CheckoutView = (props) => {
     localStorage.setItem("address", JSON.stringify(fullAddress));
     setClasses(true);
   };
+  function formatCurrency(amount) {
+    return amount.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'NGN',
+    });
+  }
   return (
     <React.Fragment>
       <Backdrop className={classes.backdrop} open={open} onClick={handleClose}>
@@ -509,9 +555,9 @@ const CheckoutView = (props) => {
                         aria-controls="panel2bh-content"
                         id="panel2bh-header"
                       >
-                        <div className={classes.heading}>Pay With PayPal</div>
+                        <div className={classes.heading}>Pay With Paystack</div>
                         <div className={classes.secondaryHeading}>
-                          Pay with your PayPal Account
+                          Pay with Paystack
                         </div>
                       </AccordionSummary>
                       <AccordionDetails>
@@ -519,7 +565,8 @@ const CheckoutView = (props) => {
                         <div class={`${spinner} text-info`} role="status">
                           <span className="sr-only">Loading...</span>
                         </div>
-                          <Button
+                          <PaystackButton {...componentProps} className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg cursor-pointer"/>
+                          {/*<Button
                             onClick={payment}
                             type="button"
                             style={{
@@ -532,11 +579,11 @@ const CheckoutView = (props) => {
                               style={{ width: "30%" }}
                               src="https://www.paypalobjects.com/digitalassets/c/website/logo/full-text/pp_fc_hl.svg"
                               alt=""
-                            />
+                            />*/}
 
-                            <span className="paypal_btn_content">Buy Now</span>
+                            {/*<span className="paypal_btn_content">Buy Now</span>
     
-                          </Button>
+                          </Button>*/}
                         </div>
                       </AccordionDetails>
                     </Accordion>
@@ -575,7 +622,7 @@ const CheckoutView = (props) => {
                           <small className="text-muted"></small>
                         </div>
                         <span className="text-muted">
-                          NGN {parseFloat(item.price)}
+                          NGN {formatCurrency(parseFloat(item.price))}
                         </span>
                       </li>
                     );
@@ -585,13 +632,13 @@ const CheckoutView = (props) => {
                   <span>{t("total")} (NGN)</span>
                   <strong>
                     {userCart &&
-                      userCart.reduce((sum, next) => {
+                        formatCurrency(parseFloat(userCart.reduce((sum, next) => {
                         return (
                           sum +
-                          (parseFloat(next.price)) *
+                          (next.price) *
                             next.selectedQuantity
                         );
-                      }, 0)}
+                      }, 0)))}
                   </strong>
                 </li>
               </ul>
