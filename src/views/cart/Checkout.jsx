@@ -66,7 +66,13 @@ const CheckoutView = (props) => {
   const handlePaystackCloseAction = () => {
     console.log('closed')
   }
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const REACT_APP_PAYSTACK_PUBLIC_KEY = process.env.REACT_APP_PAYSTACK_PUBLIC_KEY;
+  const newEmail = isValidEmail(props.user.email) ? props.user.email : 'michaeladeshina015@gmail.com';
   const [componentProps, setComponentProps] = React.useState({
     reference: "",
     email: props.user.email,
