@@ -233,28 +233,24 @@ const CheckoutView = (props) => {
       console.log(e);
     }
   }, [setToken, setCountries, setUserCart, setItems, setTotal]);
-
-  /*const handlePaystackCloseAction = () => {
-    console.log('closed')
-  }
+  const handlePaystackCloseAction = () => {
+    console.log('closed');
+  };
   const payStackConfig = {
     reference: (new Date()).getTime().toString(),
-    email: props.user,
-    amount: Math.round(totalPrice) * 100,
+    email: props.user.email,
+    amount: Math.round(parseFloat(totalPrice) * 100),
     publicKey: REACT_APP_PAYSTACK_PUBLIC_KEY,
   };
+
   const componentProps = {
     ...payStackConfig,
     text: 'Pay With Paystack',
     onSuccess: (reference) => handlePaystackSuccessAction(reference),
     onClose: handlePaystackCloseAction,
-  };*/
-
-  const handlePaystackCloseAction = () => {
-    console.log('closed');
   };
 
-  const initializePaystackPayment = () => {
+  /*const initializePaystackPayment = () => {
     const totalPrice = localStorage.getItem("total");
     let items = [];
     if (totalPrice) {
@@ -268,26 +264,14 @@ const CheckoutView = (props) => {
     }
 
     if (totalPrice && items.length > 0) {
-      const payStackConfig = {
-        reference: (new Date()).getTime().toString(),
-        email: props.user.email, // Ensure you get the user's email
-        amount: Math.round(parseFloat(totalPrice) * 100),
-        publicKey: REACT_APP_PAYSTACK_PUBLIC_KEY,
-      };
 
-      const componentProps = {
-        ...payStackConfig,
-        text: 'Pay With Paystack',
-        onSuccess: (reference) => handlePaystackSuccessAction(reference),
-        onClose: handlePaystackCloseAction,
-      };
       setSpinner('spinner-border');
       return componentProps;
     } else {
       console.log("Total price or items not available");
       return null;
     }
-  };
+  };*/
 
   const getCityAddress = (e) => {
     setFullAddress({ ...fullAddress, city: e.target.value });
@@ -339,7 +323,6 @@ const CheckoutView = (props) => {
       currency: 'NGN',
     });
   }
-  console.log(REACT_APP_PAYSTACK_PUBLIC_KEY);
 
   return (
     <React.Fragment>
@@ -557,7 +540,7 @@ const CheckoutView = (props) => {
                         <div class={`${spinner} text-info`} role="status">
                           <span className="sr-only">Loading...</span>
                         </div>
-                          <PaystackButton {...initializePaystackPayment()}
+                          <PaystackButton {...componentProps}
                             style={{
                               backgroundColor: "#E012F7",
                               color: "#ffff",
