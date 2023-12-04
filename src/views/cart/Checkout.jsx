@@ -66,23 +66,23 @@ const CheckoutView = (props) => {
   const handlePaystackSuccessAction =  async (reference) => {
     console.log(reference);
     let paymentData=reference;
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-      const { data } = await axios.post(
-          'https://fegusplacebackend.onrender.com/paymentpaystack/process',
-          paymentData,
-          config,
-      );
-      console.log(data);
-      /*const url = `/order/${data.orderId}`;
-      navigate(url);*/
-    } catch (error) {
-      console.log(error)
-    }
+    // try {
+    //   const config = {
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //   };
+    //   const { data } = await axios.post(
+    //       'https://fegusplacebackend.onrender.com/paymentpaystack/process',
+    //       paymentData,
+    //       config,
+    //   );
+    //   console.log(data);
+    //   /*const url = `/order/${data.orderId}`;
+    //   navigate(url);*/
+    // } catch (error) {
+    //   console.log(error)
+    // }
   };
   const getCountry = (e) => {
     setFullAddress({ ...fullAddress, country: e.target.value });
