@@ -138,12 +138,12 @@ const CacheOnDelivery = (props) => {
                     <p style={{ color: "black", fontWeight: "bold" }}>
                       * Living in Cairo or Giza,
                       <a style={{ color: "orange" }}>FEGUSPLACE PROMO </a> Members
-                      enjoy free delivery on all local orders and Jumia Food.
+                      enjoy free delivery on all local orders and Fegusplace Food.
                       <br />
                       <br />
-                      OR enjoy <a style={{ color: "orange" }}>FREE SHIPPING </a>
-                      using your <a style={{ color: "orange" }}>Credit Card </a>{" "}
-                      for orders starting 300 N or above, discount will be
+                      OR enjoy <a style={{ color: "#E012F7" }}>FREE SHIPPING </a>
+                      using your <a style={{ color: "#E012F7" }}>Credit Card </a>{" "}
+                      for orders starting N300 or above, discount will be
                       applied at checkout.
                       <br />
                       <br />

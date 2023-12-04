@@ -114,7 +114,7 @@ class ProductListView extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="p-5 bg-warning bs-cover">
+        <div className="p-5 bs-cover" style={{ backgroundColor: '#E012F7' }}>
           <div className="container text-center">
             <span className="display-6 px-3 bg-white rounded shadow">
               {this.state.main} {this.state.sub} {this.state.type}
