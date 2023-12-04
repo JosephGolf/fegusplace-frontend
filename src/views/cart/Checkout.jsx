@@ -357,6 +357,7 @@ const CheckoutView = (props) => {
       currency: 'NGN',
     });
   }
+  console.log(props.user.email);
   return (
     <React.Fragment>
       <Backdrop className={classes.backdrop} open={open} onClick={handleClose}>
