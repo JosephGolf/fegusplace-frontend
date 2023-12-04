@@ -281,7 +281,7 @@ const CheckoutView = (props) => {
 
       setComponentProps((prevProps) => ({
         ...prevProps,
-        amount: Math.round(totalPrice) * 100,
+        amount: Math.round(parseFloat(totalPrice) * 100),
       }));
       /*const componentProps = {
         ...payStackConfig,
@@ -573,7 +573,15 @@ const CheckoutView = (props) => {
                         <div class={`${spinner} text-info`} role="status">
                           <span className="sr-only">Loading...</span>
                         </div>
-                          <PaystackButton {...componentProps} className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg cursor-pointer"/>
+                          <PaystackButton {...componentProps}
+                            style={{
+                              backgroundColor: "#E012F7",
+                              color: "#ffff",
+                              fontWeight: "bold",
+                              width: "300px",
+                            }}
+                          />
+
                           {/*<Button
                             onClick={payment}
                             type="button"
