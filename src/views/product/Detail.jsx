@@ -2,6 +2,7 @@ import React, { useEffect, lazy } from "react";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReactStars from "react-rating-stars-component";
+import { Tab, Tabs } from 'react-bootstrap';
 import {
   faCartPlus,
   faMinus,
@@ -42,16 +43,22 @@ function ProductDetailView(props) {
           setProducts(data.data);
         });
     });
-    homeServices.getProductReview(product._id).then((data) => {      
+    homeServices.getProductReview(product._id).then((data) => {
       setReview(data.data);
     });
-    
+
   }, [setProduct, setProducts]);
   const stars = {
     size: 30,
     value: 4,
     edit: false,
   };
+  function formatCurrency(amount) {
+    return amount.toLocaleString('en-US', {
+      style: 'currency',
+      currency: 'NGN',
+    });
+  }
   return (
     <div className="container-fluid mt-3">
       <div className="row">
@@ -72,14 +79,14 @@ function ProductDetailView(props) {
             <div className="col-md-7">
               <h1 className="h5 d-inline mr-2">{product.nameEn}</h1>
               <div className="mb-3 d-flex align-items-center">
-                <ReactStars {...stars} /> 
+                <ReactStars {...stars} />
               </div>
 
               <div className="mb-3">
                 <p className="font-weight-bold h5 mr-2">
-                  EGP{product.price - (product.price * product.discount) / 100}
+                  {formatCurrency(parseFloat(product.price))}
                 </p>
-                <del className="small text-muted mr-2">EGP{product.price}</del>
+                {/*<del className="small text-muted mr-2">EGP{product.price}</del>*/}
                 <span className="rounded p-1 bg-warning  mr-2 small">
                   {product.discount}%
                 </span>
@@ -131,6 +138,23 @@ function ProductDetailView(props) {
           </div>
           <div className="row">
             <div className="col-md-12">
+              <Tabs defaultActiveKey="nav-details" id="nav-tab">
+                <Tab eventKey="nav-details" title="Details">
+                  <Details description={product.description} />
+                </Tab>
+                <Tab eventKey="nav-randr" title="Ratings & Reviews">
+                  <RatingsReviews productID={product._id} />
+                </Tab>
+                <Tab eventKey="nav-ship-returns" title="Shipping & Returns">
+                  <ShippingReturns />
+                </Tab>
+              </Tabs>
+            </div>
+          </div>
+
+
+          {/*<div className="row">
+            <div className="col-md-12">
               <nav>
                 <div className="nav nav-tabs" id="nav-tab" role="tablist">
                   <a
@@ -155,7 +179,7 @@ function ProductDetailView(props) {
                   >
                     Ratings & Reviews
                   </a>
-                  
+
                   <a
                     className="nav-link"
                     id="nav-ship-returns-tab"
@@ -185,7 +209,7 @@ function ProductDetailView(props) {
                   aria-labelledby="nav-randr-tab"
                 >
                   <RatingsReviews productID={product._id} />
-                </div>              
+                </div>
                 <div
                   className="tab-pane fade"
                   id="nav-ship-returns"
@@ -196,7 +220,9 @@ function ProductDetailView(props) {
                 </div>
               </div>
             </div>
-          </div>
+          </div>*/}
+
+
         </div>
         <div className="col-md-4">
           <CardFeaturedProduct data={products} />

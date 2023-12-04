@@ -55,7 +55,6 @@ const Header = (props) => {
               <Search />
             </div>
             <div className="col-md-5">
-              {/* Login button group */}
               <div className="btn-group">
                 <Dropdown>
                   <Dropdown.Toggle variant="secondary" className="border mr-3" id="dropdown-basic">

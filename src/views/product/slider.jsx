@@ -11,16 +11,22 @@ const responsive = {
 };
 
 let items = [];
+function formatCurrency(amount) {
+    return amount.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'NGN',
+    });
+}
 
 props.data.map((item=>
-    items.push(    
+    items.push(
         <div className="card text-center m-3">
             <div className="card-body">
             <div className="mb-3">
                 <p className="font-weight-bold h5 mr-2">
-                    ₦ {item.price - (item.price * item.discount) / 100}
+                    { formatCurrency(parseFloat(item.price) ) }
                 </p>
-                <del className="small text-muted mr-2">EGP {item.price}</del>
+                {/*<del className="small text-muted mr-2">{formatCurrency(item.price)}</del>*/}
                 <span className="rounded p-1 bg-warning  mr-2 small">
                   {item.discount}%
                 </span>
@@ -32,7 +38,7 @@ props.data.map((item=>
                 <small className="text-muted">{item.brand}</small>
             </Link>
             </div>
-        </div>    
+        </div>
         )
         ))
 
@@ -43,7 +49,7 @@ return (
         responsive={responsive}
         controlsStrategy="alternate"
         autoPlay
-        autoPlayInterval={2000}
+        autoPlayInterval={3000}
     />
 )
 }

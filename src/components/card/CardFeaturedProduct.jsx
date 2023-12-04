@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ReactComponent as IconStarFill } from "bootstrap-icons/icons/star-fill.svg";
-
+function formatCurrency(amount) {
+    return amount.toLocaleString('en-US', {
+        style: 'currency',
+        currency: 'NGN',
+    });
+}
 const CardFeaturedProduct = (props) => {
   const products = props.data;
   return (
@@ -33,9 +38,9 @@ const CardFeaturedProduct = (props) => {
                 ))}
               </div>
               <p className="font-weight-bold h5">
-                ${product.price - (product.price * product.discount) / 100}
+                  {formatCurrency(parseFloat(product.price))}
               </p>
-              <del className="small text-muted mr-2">${product.price}</del>
+              {/*<del className="small text-muted mr-2">${product.price}</del>*/}
               <span className="rounded p-1 bg-warning  mr-2 small">
                 {product.discount}%
               </span>
