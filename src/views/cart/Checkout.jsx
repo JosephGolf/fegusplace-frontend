@@ -16,7 +16,6 @@ import CacheOnDelivery from "./cacheOnDelivery";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import { PaystackButton } from 'react-paystack';
-
 import "./checkout.css";
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -46,7 +45,6 @@ const CheckoutView = (props) => {
     setOpen(false);
   };
   const [expanded, setExpanded] = React.useState(false);
-
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
@@ -64,17 +62,28 @@ const CheckoutView = (props) => {
   const [address2, setAddress2] = React.useState("");
   const [toggleClasses, setClasses] = React.useState(false);
   const [spinner,setSpinner]=React.useState('')
-  const isValidEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
   const REACT_APP_PAYSTACK_PUBLIC_KEY = process.env.REACT_APP_PAYSTACK_PUBLIC_KEY;
-  const newEmail = isValidEmail(props.user.email) ? props.user.email : 'michaeladeshina015@gmail.com';
-  const handlePaystackSuccessAction =  (reference) => {
+  const handlePaystackSuccessAction =  async (reference) => {
     console.log(reference);
+    let paymentData=reference;
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const { data } = await axios.post(
+          'https://fegusplacebackend.onrender.com/paymentpaystack/process',
+          paymentData,
+          config,
+      );
+      console.log(data);
+      /*const url = `/order/${data.orderId}`;
+      navigate(url);*/
+    } catch (error) {
+      console.log(error)
+    }
   };
-
   const getCountry = (e) => {
     setFullAddress({ ...fullAddress, country: e.target.value });
     fetch(`https://www.universal-tutorial.com/api/states/${e.target.value}`, {
@@ -119,7 +128,7 @@ const CheckoutView = (props) => {
       });
   };
   React.useEffect(() => {
-    if (props.location.search) {
+    /*if (props.location.search) {
       const paymentId = new URLSearchParams(search).get("paymentId");
       const orderToken = new URLSearchParams(search).get("token");
       const PayerID = new URLSearchParams(search).get("PayerID");
@@ -179,7 +188,7 @@ const CheckoutView = (props) => {
             console.log(e);
           });
       }
-    }
+    }*/
     fetch("https://www.universal-tutorial.com/api/getaccesstoken", {
       headers: {
         Accept: "application/json",
@@ -250,55 +259,17 @@ const CheckoutView = (props) => {
     onSuccess: (reference) => handlePaystackSuccessAction(reference),
     onClose: handlePaystackCloseAction,
   };
-
-  /*const initializePaystackPayment = () => {
-    const totalPrice = localStorage.getItem("total");
-    let items = [];
-    if (totalPrice) {
-      items = userCart.map((item) => ({
-        name: item.nameEn,
-        sku: item.nameEn,
-        price: parseFloat(item.price),
-        currency: "NGN",
-        quantity: item.selectedQuantity,
-      }));
-    }
-
-    if (totalPrice && items.length > 0) {
-
-      setSpinner('spinner-border');
-      return componentProps;
-    } else {
-      console.log("Total price or items not available");
-      return null;
-    }
-  };*/
-
+  setItems(() => {
+    return userCart.map((item) => ({
+      name: item.nameEn,
+      sku: item.nameEn,
+      price: parseFloat(item.price),
+      currency: "NGN",
+      quantity: item.selectedQuantity,
+    }));
+  });
   const getCityAddress = (e) => {
     setFullAddress({ ...fullAddress, city: e.target.value });
-  };
-  const payment = (e) => {
-    setSpinner('spinner-border')
-    e.preventDefault();
-    setItems(() => {
-      return userCart.map((item) => {
-        return {
-          name: item.nameEn,
-          sku: item.nameEn,
-          price: parseFloat(item.price),
-          currency: "NGN",
-          quantity: item.selectedQuantity,
-        };
-      });
-    });
-
-    const totalPrice = localStorage.getItem("total");
-    if (totalPrice && items) {
-
-
-    } else {
-
-    }
   };
   const handleName = (e) => {
     setName(e.target.value);
@@ -606,7 +577,7 @@ const CheckoutView = (props) => {
                           <small className="text-muted"></small>
                         </div>
                         <span className="text-muted">
-                          NGN {formatCurrency(parseFloat(item.price))}
+                           {formatCurrency(parseFloat(item.price))}
                         </span>
                       </li>
                     );
