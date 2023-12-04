@@ -46,6 +46,7 @@ const CheckoutView = (props) => {
     setOpen(false);
   };
   const [expanded, setExpanded] = React.useState(false);
+
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
@@ -63,9 +64,6 @@ const CheckoutView = (props) => {
   const [address2, setAddress2] = React.useState("");
   const [toggleClasses, setClasses] = React.useState(false);
   const [spinner,setSpinner]=React.useState('')
-  const handlePaystackCloseAction = () => {
-    console.log('closed')
-  }
   const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -73,36 +71,8 @@ const CheckoutView = (props) => {
 
   const REACT_APP_PAYSTACK_PUBLIC_KEY = process.env.REACT_APP_PAYSTACK_PUBLIC_KEY;
   const newEmail = isValidEmail(props.user.email) ? props.user.email : 'michaeladeshina015@gmail.com';
-  const [componentProps, setComponentProps] = React.useState({
-    reference: "",
-    email: 'michaeladeshina015@gmail.com',
-    amount: 0,
-    publicKey: REACT_APP_PAYSTACK_PUBLIC_KEY,
-    text: "Pay With Paystack",
-    onSuccess: (reference) => handlePaystackSuccessAction(reference),
-    onClose: handlePaystackCloseAction,
-  });
   const handlePaystackSuccessAction =  (reference) => {
     console.log(reference);
-    /*let paymentData=reference;
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-      const { data } = await axios.post(
-          '/api/v1/payment/process',
-          paymentData,
-          config,
-      );
-      const url = `/order/${data.orderId}`;
-      navigate(url);
-    } catch (error) {
-      setPayDisable(false);
-      enqueueSnackbar(error.response.data.message, { variant: "error" });
-    }*/
-
   };
 
   const getCountry = (e) => {
@@ -264,6 +234,61 @@ const CheckoutView = (props) => {
     }
   }, [setToken, setCountries, setUserCart, setItems, setTotal]);
 
+  /*const handlePaystackCloseAction = () => {
+    console.log('closed')
+  }
+  const payStackConfig = {
+    reference: (new Date()).getTime().toString(),
+    email: props.user,
+    amount: Math.round(totalPrice) * 100,
+    publicKey: REACT_APP_PAYSTACK_PUBLIC_KEY,
+  };
+  const componentProps = {
+    ...payStackConfig,
+    text: 'Pay With Paystack',
+    onSuccess: (reference) => handlePaystackSuccessAction(reference),
+    onClose: handlePaystackCloseAction,
+  };*/
+
+  const handlePaystackCloseAction = () => {
+    console.log('closed');
+  };
+
+  const initializePaystackPayment = () => {
+    const totalPrice = localStorage.getItem("total");
+    let items = [];
+    if (totalPrice) {
+      items = userCart.map((item) => ({
+        name: item.nameEn,
+        sku: item.nameEn,
+        price: parseFloat(item.price),
+        currency: "NGN",
+        quantity: item.selectedQuantity,
+      }));
+    }
+
+    if (totalPrice && items.length > 0) {
+      const payStackConfig = {
+        reference: (new Date()).getTime().toString(),
+        email: props.user.email, // Ensure you get the user's email
+        amount: Math.round(parseFloat(totalPrice) * 100),
+        publicKey: REACT_APP_PAYSTACK_PUBLIC_KEY,
+      };
+
+      const componentProps = {
+        ...payStackConfig,
+        text: 'Pay With Paystack',
+        onSuccess: (reference) => handlePaystackSuccessAction(reference),
+        onClose: handlePaystackCloseAction,
+      };
+      setSpinner('spinner-border');
+      return componentProps;
+    } else {
+      console.log("Total price or items not available");
+      return null;
+    }
+  };
+
   const getCityAddress = (e) => {
     setFullAddress({ ...fullAddress, city: e.target.value });
   };
@@ -285,58 +310,9 @@ const CheckoutView = (props) => {
     const totalPrice = localStorage.getItem("total");
     if (totalPrice && items) {
 
-      setComponentProps((prevProps) => ({
-        ...prevProps,
-        amount: Math.round(parseFloat(totalPrice) * 100),
-      }));
-      /*const componentProps = {
-        ...payStackConfig,
-        text: 'Pay With Paystack',
-        onSuccess: (reference) => handlePaystackSuccessAction(reference),
-        onClose: handlePaystackCloseAction,
-      };*/
-      /*var create_payment_json = {
-        intent: "sale",
-        payer: {
-          payment_method: "paypal",
-        },
-        redirect_urls: {
-          return_url: "https://localhost:3000/checkout",
-          cancel_url: "http://cancel.url",
-        },
-        transactions: [
-          {
-            item_list: {
-              items: items,
-            },
-            amount: {
-              currency: "USD",
-              total: total,
-            },
-            description: "This is the payment description.",
-          },
-        ],
-      };
-      axios({
-        url: "https://fegusplacebackend.onrender.com/payment/paypal-payment",
-        method: "POST",
-        headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODFmYTJmYTc2NDBhMjllMGM4ZmVkMSIsImlhdCI6MTYxOTM5NDg3OSwiZXhwIjoxNjE5NDE2NDc5fQ.znfafu6gcRfisVjybUnHGIoakOYK23ant5rMMlQ2CGg`,
-        },
-        data: {
-          create_payment_json,
-        },
-      })
-        .then((data) => {
 
-          if (data.data.redirect) window.location.href = data.data.redirect;
-          setSpinner('')
-        })
-        .catch((e) => {
-          console.log(e);
-        });*/
     } else {
-      
+
     }
   };
   const handleName = (e) => {
@@ -363,7 +339,7 @@ const CheckoutView = (props) => {
       currency: 'NGN',
     });
   }
-  console.log(props.user.email);
+
   return (
     <React.Fragment>
       <Backdrop className={classes.backdrop} open={open} onClick={handleClose}>
@@ -580,7 +556,7 @@ const CheckoutView = (props) => {
                         <div class={`${spinner} text-info`} role="status">
                           <span className="sr-only">Loading...</span>
                         </div>
-                          <PaystackButton {...componentProps}
+                          <PaystackButton {...initializePaystackPayment()}
                             style={{
                               backgroundColor: "#E012F7",
                               color: "#ffff",
