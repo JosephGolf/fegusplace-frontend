@@ -46,7 +46,6 @@ const CheckoutView = (props) => {
     setOpen(false);
   };
   const [expanded, setExpanded] = React.useState(false);
-
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
@@ -64,8 +63,41 @@ const CheckoutView = (props) => {
   const [address2, setAddress2] = React.useState("");
   const [toggleClasses, setClasses] = React.useState(false);
   const [spinner,setSpinner]=React.useState('')
+  const handlePaystackCloseAction = () => {
+    console.log('closed')
+  }
   const REACT_APP_PAYSTACK_PUBLIC_KEY = process.env.REACT_APP_PAYSTACK_PUBLIC_KEY;
+  const [componentProps, setComponentProps] = React.useState({
+    reference: "",
+    email: props.user.email,
+    amount: 0,
+    publicKey: REACT_APP_PAYSTACK_PUBLIC_KEY,
+    text: "Pay With Paystack",
+    onSuccess: (reference) => handlePaystackSuccessAction(reference),
+    onClose: handlePaystackCloseAction,
+  });
+  const handlePaystackSuccessAction =  (reference) => {
+    console.log(reference);
+    /*let paymentData=reference;
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const { data } = await axios.post(
+          '/api/v1/payment/process',
+          paymentData,
+          config,
+      );
+      const url = `/order/${data.orderId}`;
+      navigate(url);
+    } catch (error) {
+      setPayDisable(false);
+      enqueueSnackbar(error.response.data.message, { variant: "error" });
+    }*/
 
+  };
 
   const getCountry = (e) => {
     setFullAddress({ ...fullAddress, country: e.target.value });
@@ -243,45 +275,20 @@ const CheckoutView = (props) => {
         };
       });
     });
-    const handlePaystackCloseAction = () => {
-      console.log('closed')
-    }
+
     const totalPrice = localStorage.getItem("total");
     if (totalPrice && items) {
-      const handlePaystackSuccessAction =  (reference) => {
-        console.log(reference);
-        /*let paymentData=reference;
-        try {
-          const config = {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          };
-          const { data } = await axios.post(
-              '/api/v1/payment/process',
-              paymentData,
-              config,
-          );
-          const url = `/order/${data.orderId}`;
-          navigate(url);
-        } catch (error) {
-          setPayDisable(false);
-          enqueueSnackbar(error.response.data.message, { variant: "error" });
-        }*/
 
-      };
-      const payStackConfig = {
-        reference: (new Date()).getTime().toString(),
-        email: props.user,
+      setComponentProps((prevProps) => ({
+        ...prevProps,
         amount: Math.round(totalPrice) * 100,
-        publicKey: REACT_APP_PAYSTACK_PUBLIC_KEY,
-      };
-      const componentProps = {
+      }));
+      /*const componentProps = {
         ...payStackConfig,
         text: 'Pay With Paystack',
         onSuccess: (reference) => handlePaystackSuccessAction(reference),
         onClose: handlePaystackCloseAction,
-      };
+      };*/
       /*var create_payment_json = {
         intent: "sale",
         payer: {
