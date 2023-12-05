@@ -73,13 +73,68 @@ const CheckoutView = (props) => {
         },
       };
       const { data } = await axios.post(
-          'https://fegusplacebackend.onrender.com/paymentpaystack/process',
+          'https://fegusplacebackend.onrender.com/payment/paymentpaystack',
           paymentData,
           config,
       );
       console.log(data);
-      /*const url = `/order/${data.orderId}`;
-      navigate(url);*/
+      setItems(() => {
+        return userCart.map((item) => ({
+          name: item.nameEn,
+          sku: item.nameEn,
+          price: parseFloat(item.price),
+          currency: "NGN",
+          quantity: item.selectedQuantity,
+        }));
+      });
+      axios({
+        url: "https://fegusplacebackend.onrender.com/order/set-order",
+        method: "post",
+        data: {
+          paymentId: reference.reference,
+          orderDate: new Date(),
+          payerId: reference.reference.id,
+          userId: props.user._id,
+          orderToken: data.orderId,
+          orderFunds: totalPrice,
+        },
+      })
+          .then((data) => {
+            if (data.data.orderDate) {
+              const { paymentId, payerId, orderFunds, orderDate } = data.data;
+              const token = localStorage.getItem("token");
+              const Address = localStorage.getItem("address");
+              const newOrders = props.user.orders;
+              newOrders.push({
+                paymentId: paymentId,
+                payerId: payerId,
+                orderDate: orderDate,
+                orderFunds: orderFunds,
+                address: Address,
+              });
+              axios({
+                method: "put",
+                url: "https://fegusplacebackend.onrender.com/user/orders",
+                data: { orders: newOrders },
+                headers: { Authorization: `Bearer ${token}` },
+              })
+                  .then((user) => {
+                    if (user.data == "User Updated") {
+                      localStorage.removeItem("total");
+                      localStorage.removeItem("address");
+                      localStorage.removeItem("cart");
+                      setOpen(false);
+                      props.history.push("/account/orders");
+                    }
+                  })
+                  .catch((e) => {
+                    console.log(e);
+                  });
+            }
+          })
+          .catch((e) => {
+            console.log(e);
+          });
     } catch (error) {
       console.log(error)
     }
@@ -128,67 +183,6 @@ const CheckoutView = (props) => {
       });
   };
   React.useEffect(() => {
-    /*if (props.location.search) {
-      const paymentId = new URLSearchParams(search).get("paymentId");
-      const orderToken = new URLSearchParams(search).get("token");
-      const PayerID = new URLSearchParams(search).get("PayerID");
-      const totalPrice = localStorage.getItem("total");
-      setOpen(true);
-      if (totalPrice) {
-        axios({
-          url: "https://fegusplacebackend.onrender.com/order/set-order",
-          method: "post",
-          // headers:{
-          //  Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwODFmYTJmYTc2NDBhMjllMGM4ZmVkMSIsImlhdCI6MTYxOTM5NDg3OSwiZXhwIjoxNjE5NDE2NDc5fQ.znfafu6gcRfisVjybUnHGIoakOYK23ant5rMMlQ2CGg`
-          // },
-          data: {
-            paymentId: paymentId,
-            orderDate: new Date(),
-            payerId: PayerID,
-            userId: props.user._id,
-            orderToken: orderToken,
-            orderFunds: totalPrice,
-          },
-        })
-          .then((data) => {
-            if (data.data.orderDate) {
-              const { paymentId, payerId, orderFunds, orderDate } = data.data;
-              const token = localStorage.getItem("token");
-              const Address = localStorage.getItem("address");
-              const newOrders = props.user.orders;
-              newOrders.push({
-                paymentId: paymentId,
-                payerId: payerId,
-                orderDate: orderDate,
-                orderFunds: orderFunds,
-                address: Address,
-              });
-
-              axios({
-                method: "put",
-                url: "https://fegusplacebackend.onrender.com/user/orders",
-                data: { orders: newOrders },
-                headers: { Authorization: `Bearer ${token}` },
-              })
-                .then((user) => {
-                  if (user.data == "User Updated") {
-                    localStorage.removeItem("total");
-                    localStorage.removeItem("address");
-                    localStorage.removeItem("cart");
-                    setOpen(false);
-                    props.history.push("/account/orders");
-                  }
-                })
-                .catch((e) => {
-                  console.log(e);
-                });
-            }
-          })
-          .catch((e) => {
-            console.log(e);
-          });
-      }
-    }*/
     fetch("https://www.universal-tutorial.com/api/getaccesstoken", {
       headers: {
         Accept: "application/json",
@@ -259,15 +253,6 @@ const CheckoutView = (props) => {
     onSuccess: (reference) => handlePaystackSuccessAction(reference),
     onClose: handlePaystackCloseAction,
   };
-  /*setItems(() => {
-    return userCart.map((item) => ({
-      name: item.nameEn,
-      sku: item.nameEn,
-      price: parseFloat(item.price),
-      currency: "NGN",
-      quantity: item.selectedQuantity,
-    }));
-  });*/
   const getCityAddress = (e) => {
     setFullAddress({ ...fullAddress, city: e.target.value });
   };

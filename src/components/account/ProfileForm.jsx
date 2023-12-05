@@ -17,15 +17,15 @@ const ProfileSiderBar = (props) => {
         </h6>
 
         <div className="cardLinks">
-          <ul class="list-group">            
+          <ul className="list-group">
             <Link to="/account/orders">
-              <li class="list-group-item">Orders</li>
+              <li className="list-group-item">Orders</li>
             </Link>           
             <Link to="/support">
-              <li class="list-group-item">Support</li>
+              <li className="list-group-item">Support</li>
             </Link>
             <Link to="/contact-us">
-              <li class="list-group-item">Contact</li>
+              <li className="list-group-item">Contact</li>
             </Link>
           </ul>
         </div>
