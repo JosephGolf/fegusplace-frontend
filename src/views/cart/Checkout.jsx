@@ -63,7 +63,7 @@ const CheckoutView = (props) => {
   const [toggleClasses, setClasses] = React.useState(false);
   const [spinner,setSpinner]=React.useState('')
   const REACT_APP_PAYSTACK_PUBLIC_KEY = process.env.REACT_APP_PAYSTACK_PUBLIC_KEY;
-  const handlePaystackSuccessAction =  async (reference) => {
+  const handlePaystackSuccessAction =   (reference) => {
     console.log(reference);
     let paymentData=reference;
     // try {
