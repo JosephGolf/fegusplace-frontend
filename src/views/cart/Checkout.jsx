@@ -63,26 +63,26 @@ const CheckoutView = (props) => {
   const [toggleClasses, setClasses] = React.useState(false);
   const [spinner,setSpinner]=React.useState('')
   const REACT_APP_PAYSTACK_PUBLIC_KEY = process.env.REACT_APP_PAYSTACK_PUBLIC_KEY;
-  const handlePaystackSuccessAction =   (reference) => {
+  const handlePaystackSuccessAction =   async (reference) => {
     console.log(reference);
     let paymentData=reference;
-    // try {
-    //   const config = {
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   };
-    //   const { data } = await axios.post(
-    //       'https://fegusplacebackend.onrender.com/paymentpaystack/process',
-    //       paymentData,
-    //       config,
-    //   );
-    //   console.log(data);
-    //   /*const url = `/order/${data.orderId}`;
-    //   navigate(url);*/
-    // } catch (error) {
-    //   console.log(error)
-    // }
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const { data } = await axios.post(
+          'https://fegusplacebackend.onrender.com/paymentpaystack/process',
+          paymentData,
+          config,
+      );
+      console.log(data);
+      /*const url = `/order/${data.orderId}`;
+      navigate(url);*/
+    } catch (error) {
+      console.log(error)
+    }
   };
   const getCountry = (e) => {
     setFullAddress({ ...fullAddress, country: e.target.value });
@@ -259,7 +259,7 @@ const CheckoutView = (props) => {
     onSuccess: (reference) => handlePaystackSuccessAction(reference),
     onClose: handlePaystackCloseAction,
   };
-  setItems(() => {
+  /*setItems(() => {
     return userCart.map((item) => ({
       name: item.nameEn,
       sku: item.nameEn,
@@ -267,7 +267,7 @@ const CheckoutView = (props) => {
       currency: "NGN",
       quantity: item.selectedQuantity,
     }));
-  });
+  });*/
   const getCityAddress = (e) => {
     setFullAddress({ ...fullAddress, city: e.target.value });
   };
@@ -509,16 +509,17 @@ const CheckoutView = (props) => {
                       </AccordionSummary>
                       <AccordionDetails>
                         <div>
-                        <div class={`${spinner} text-info`} role="status">
+                        <div className={`${spinner} text-info`} role="status">
                           <span className="sr-only">Loading...</span>
                         </div>
                           <PaystackButton {...componentProps}
-                            style={{
-                              backgroundColor: "#E012F7",
-                              color: "#ffff",
-                              fontWeight: "bold",
-                              width: "300px",
-                            }}
+                              style={{
+                                backgroundColor: "#f68b1e",
+                                color: "#ffff",
+                                fontWeight: "bold",
+                                width: "300px",
+                              }}
+                              variant="contained"
                           />
 
                           {/*<Button
