@@ -66,7 +66,7 @@ const CacheOnDelivery = (props) => {
           headers: { Authorization: `Bearer ${token}` },
         })
           .then((user) => {
-            if (user.data == "User Updated") {
+            if (user.data === "User Updated") {
               localStorage.removeItem("total");
               localStorage.removeItem("address");
               localStorage.removeItem("cart");

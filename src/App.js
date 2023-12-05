@@ -52,7 +52,7 @@ function App(props) {
            headers: { Authorization: `Bearer ${token}` }}
            ).then(data=>{
              data.json().then(data=>{
-                if(data.message == 'User Not Found'){
+                if(data.message === 'User Not Found'){
                     console.log(data.message,'offline')
                 }  else{
                      props.setUserName(data)
@@ -61,7 +61,7 @@ function App(props) {
              })
         
            }).catch(e=>{
-         if(e.message == 'User Not Found'){
+         if(e.message === 'User Not Found'){
              console.log(e.message,'offline')
          }   
          })
@@ -82,7 +82,7 @@ function App(props) {
           <Suspense
             fallback={
               <div className={`text-white text-center mt-3`}>
-                <img src={loader} />
+                <img src={loader}  alt={''}/>
               </div>
             }
           >

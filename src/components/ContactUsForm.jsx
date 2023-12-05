@@ -4,7 +4,6 @@ import { compose } from "redux";
 import {
   renderFormGroupField,
   renderFormTextArea,
-  renderFormCheckbox,
 } from "../helpers/renderForm";
 import {
   required,

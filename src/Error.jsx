@@ -12,7 +12,7 @@ function Error({ product }) {
         </p>
         <div className="col-md-12 card text-center">
           <div className="error">
-            <img src={opps} />
+            <img src={opps} alt={"Not Found"} />
           </div>
         </div>
       </div>

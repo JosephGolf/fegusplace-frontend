@@ -73,6 +73,7 @@ function ProductDetailView(props) {
                   className="border border-secondary mr-2"
                   width="75"
                   onClick={() => setActiveImg(img)}
+                  alt={''}
                 />
               ))}
             </div>

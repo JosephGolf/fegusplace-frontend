@@ -1,6 +1,6 @@
-import React, { lazy, Component } from "react";
+import React, { lazy } from "react";
 const ProfileSiderBar = lazy(() =>
-  import("../../components/account/ProfileForm")
+    import("../../components/account/ProfileForm")
 );
 const OrdersView = (props) => {
   const [user, setUser] = React.useState([]);

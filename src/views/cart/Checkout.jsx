@@ -2,7 +2,7 @@ import React from "react";
 import { ReactComponent as IconEnvelope } from "bootstrap-icons/icons/envelope.svg";
 import { ReactComponent as IconTruck } from "bootstrap-icons/icons/truck.svg";
 import { ReactComponent as IconCart3 } from "bootstrap-icons/icons/cart3.svg";
-import { useLocation } from "react-router-dom";
+/*import { useLocation } from "react-router-dom";*/
 import Button from "@material-ui/core/Button";
 import axios from "axios";
 import Backdrop from "@material-ui/core/Backdrop";
@@ -38,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
 
 const CheckoutView = (props) => {
   const {t} =useTranslation();
-  const search = useLocation().search;
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleClose = () => {
@@ -223,7 +222,7 @@ const CheckoutView = (props) => {
         })
           .then((data) =>
             data.json().then((data) => {
-              if (data != "undefined") {
+              if (data !== "undefined") {
                 setUserCart(data.cart);
               }
             })
@@ -246,7 +245,6 @@ const CheckoutView = (props) => {
     amount: Math.round(parseFloat(totalPrice) * 100),
     publicKey: REACT_APP_PAYSTACK_PUBLIC_KEY,
   };
-
   const componentProps = {
     ...payStackConfig,
     text: 'Pay With Paystack',

@@ -32,7 +32,7 @@ props.data.map((item=>
                 </span>
               </div>
             <Link className="text-decoration-none" to={`/product/detail/${item.nameEn}`}>
-                <img src={item.image} style={{width:'100px'}}/>
+                <img src={item.image} style={{width:'100px'}} alt={""}/>
                 <h6 className="card-title text-capitalize">{formatTitle(item.nameEn)}</h6>
                 <div className="card-text text-success"> {item.brand}</div>
                 <small className="text-muted">{item.brand}</small>

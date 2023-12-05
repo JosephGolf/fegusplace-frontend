@@ -17,8 +17,6 @@ const initialState = {
   }
 }
 export const productReducer = (state = initialState, action) => {
-  {
-  }
   var cart = JSON.parse(localStorage.getItem("cart"));
   if (action.type === "PLUS") {
     const newCart = [...cart];

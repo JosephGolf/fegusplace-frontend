@@ -61,7 +61,6 @@ const Cart = (props) => {
   const [progress, setProgress] = React.useState(0);
   const [progressShow, setProgressShow] = React.useState(true);
   let total = 0;
-  let items = 0;
   const classes = useStyles();
   const [cart, setCart] = React.useState();
   const getCartFromLocalStorage = () => {

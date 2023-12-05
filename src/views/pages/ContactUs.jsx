@@ -1,8 +1,8 @@
 import React, { lazy, Component } from "react";
 import { ReactComponent as IconEnvelopeFill } from "bootstrap-icons/icons/envelope-fill.svg";
-import { ReactComponent as IconHouseFill } from "bootstrap-icons/icons/house-fill.svg";
+/*import { ReactComponent as IconHouseFill } from "bootstrap-icons/icons/house-fill.svg";*/
 import { homeServices } from "../../services/_home";
-import { ReactComponent as IconTelephoneFill } from "bootstrap-icons/icons/telephone-fill.svg";
+/*import { ReactComponent as IconTelephoneFill } from "bootstrap-icons/icons/telephone-fill.svg";*/
 import contactTop from "../../assets/contact-top.jpg";
 const ContactUsForm = lazy(() => import("../../components/ContactUsForm"));
 

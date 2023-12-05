@@ -10,7 +10,7 @@ import "./css/heading.css";
 import { ReactComponent as IconSearch } from "bootstrap-icons/icons/search.svg";
 
 const Search = (props) => {
-  let SearchArray = [];
+  /*let SearchArray = [];*/
   const [products, setProducts] = React.useState([]);
 
   const [input, setInput] = React.useState("");
@@ -27,7 +27,7 @@ const Search = (props) => {
       }
     );
   }, []);
-  SearchArray = [].concat(products);
+  /*SearchArray = [].concat(products);*/
  
   function search(e) {
     e.preventDefault();
