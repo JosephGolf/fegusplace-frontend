@@ -9,6 +9,12 @@ function Slider(props) {
         568: { items: 2 },
         1024: { items: 3 },
     };
+    function formatCurrency(amount) {
+        return amount.toLocaleString('en-US', {
+            style: 'currency',
+            currency: 'NGN',
+        });
+    }
 
     const items = props.data.map((item) => (
         <div key={item.productId} className="card text-center m-3">
@@ -42,7 +48,6 @@ function Slider(props) {
         />
     );
 }
-
 export default Slider;
 
 
