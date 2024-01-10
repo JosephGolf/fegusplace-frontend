@@ -62,6 +62,7 @@ const CheckoutView = (props) => {
   const [toggleClasses, setClasses] = React.useState(false);
   const [spinner,setSpinner]=React.useState('')
   const REACT_APP_PAYSTACK_PUBLIC_KEY = process.env.REACT_APP_PAYSTACK_PUBLIC_KEY;
+  const REACT_APP_PAYSTACK_SUB_ACCOUNT = process.env.REACT_APP_PAYSTACK_SUB_ACCOUNT;
   const handlePaystackSuccessAction =   async (reference) => {
     console.log(reference);
     let paymentData=reference;
@@ -243,6 +244,7 @@ const CheckoutView = (props) => {
     reference: (new Date()).getTime().toString(),
     email: props.user.email,
     amount: Math.round(parseFloat(totalPrice) * 100),
+    subaccount: REACT_APP_PAYSTACK_SUB_ACCOUNT,
     publicKey: REACT_APP_PAYSTACK_PUBLIC_KEY,
   };
   const componentProps = {
